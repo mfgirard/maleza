@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Maleza — Cultivo consciente, suelo vivo y sistema endocannabinoide</title>
+<meta name="description" content="Maleza documenta el cultivo consciente de cannabis: suelo vivo, sistema endocannabinoide y cultura del cuidado. Sin lenguaje comercial, sin promesas terapéuticas.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Montserrat:wght@300;400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+
+  /* ===== TOKENS ===== */
+  :root{
+    --paper:    #F4EFE5;
+    --paper-2:  #EBE2D1;
+    --ink:      #2A2118;
+    --ink-60:   rgba(42,33,24,0.62);
+    --ink-30:   rgba(42,33,24,0.22);
+    --moss:     #5B6B45;
+    --clay:     #B5613E;
+
+    --font-display: 'Cormorant Garamond', Georgia, serif;
+    --font-body:    'Montserrat', -apple-system, sans-serif;
+    --font-mono:    'Space Mono', 'Courier New', monospace;
+
+    --container: 1140px;
+    --gap: clamp(1.5rem, 4vw, 3rem);
+  
+
+  /* ===== REVEAL ON SCROLL ===== */
+  .reveal{
+    opacity:0;
+    transform:translateY(18px);
+    transition:opacity 0.7s ease, transform 0.7s ease;
+  }
+  .reveal.is-visible{ opacity:1; transform:translateY(0); }
+
+  /* ===== HEADER ===== */
+  header{
+    position:sticky; top:0; z-index:50;
+    background:rgba(244,239,229,0.86);
+    backdrop-filter:blur(6px);
+    border-bottom:1px solid var(--ink-30);
+  }
+  .nav{
+    display:flex; align-items:center; justify-content:space-between;
+    padding:1.1rem clamp(1.25rem, 4vw, 2.5rem);
+  }
+  .wordmark{
+    font-family:"futura", sans-serif;
+    font-size: 3rem;
+    font-weight:700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+  .nav-links{
+    display:flex; gap:clamp(1rem, 3vw, 2.2rem); align-items:center;
+    font-family:var(--font-mono);
+    font-size:0.7rem;
+    letter-spacing:0.14em;
+    text-transform:uppercase;
+  }
+  .nav-links a{
+    padding-bottom:0.35rem;
+    border-bottom:1px solid transparent;
+    transition:border-color 0.25s ease, color 0.25s ease;
+  }
+  .nav-links a:hover{ border-color:var(--clay); color:var(--clay); }
+  .nav-links .ig{ color:var(--clay); }
+  @media (max-width:640px){
+    .nav-links a:not(.ig){ display:none; }
+    .nav-links{ gap:0; }
+  }
+
+  /* ===== HERO ===== */
+  .hero{
+    padding:clamp(3rem,8vw,6rem) 0 clamp(2.5rem,6vw,4.5rem);
+    display:grid;
+    grid-template-columns: 1fr;
+    gap:var(--gap);
+    align-items:center;
+    justify-items:center;
+    text-align:center;
+  }
+  .hero h1{
+    font-size:clamp(2.4rem, 5.6vw, 4.2rem);
+    margin-bottom:1.1rem;
+  }
+  .hero h1 em{
+    font-style:italic;
+    color:var(--clay);
+  }
+  .hero .lead{ margin-bottom:2rem; font-size:1.02rem; }
+  .cta-row{
+    display:flex; 
+    flex-wrap:wrap; 
+    gap:1.6rem;
+    justify-content: center;
+    font-family:var(--font-mono);
+    font-size:0.75rem;
+    letter-spacing:0.14em;
+    text-transform:uppercase;
+  }
+  .cta-row a{
+    border-bottom:1px solid var(--ink);
+    padding-bottom:0.3rem;
+    transition:color 0.25s ease, border-color 0.25s ease;
+  }
+  .cta-row a:hover{ color:var(--moss); border-color:var(--moss); }
+  .hero-art{ width:100%; }
+  @media (max-width:860px){
+    .hero{ grid-template-columns:1fr; }
+    .hero-art{ max-width:280px; margin:0 auto; order:-1; }
+  }
+
+  /* root diagram animation */
+  .root-line{
+    stroke-dasharray: 600;
+    stroke-dashoffset: 600;
+    animation: draw 1.8s ease forwards;
+    animation-delay: 0.3s;
+  }
+  @media (prefers-reduced-motion: reduce){
+    .root-line{ stroke-dashoffset:0; animation:none; }
+  }
+  @keyframes draw{ to{ stroke-dashoffset:0; } }
+
+  /* ===== SECTION SPACING ===== */
+  section{ padding:clamp(3rem,7vw,5.5rem) 0; }
+  .section-head{ max-width:46ch; margin-bottom:clamp(2rem,5vw,3.5rem); }
+  .section-head h2{ font-size:clamp(1.9rem,4vw,2.6rem); }
+
+  /* ===== PILARES ===== */
+  .pilares-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    border-top:1px solid var(--ink-30);
+  }
+  .pilar{
+    padding:clamp(1.6rem,3vw,2.4rem) clamp(1.4rem,3vw,2.2rem);
+    border-left:1px solid var(--ink-30);
+    border-bottom:1px solid var(--ink-30);
+  }
+  .pilar:first-child{ border-left:none; }
+  .pilar .eyebrow{ color:var(--clay); }
+  .pilar h3{
+    font-size:1.5rem;
+    margin-bottom:0.8rem;
+  }
+  .pilar p{ color:var(--ink-60); font-size:0.95rem; }
+  @media (max-width:860px){
+    .pilares-grid{ grid-template-columns:1fr; }
+    .pilar{ border-left:none; }
+    .pilar:first-child{ border-top:none; }
+  }
+
+  /* ===== BITÁCORA ===== */
+  .bitacora{ background:var(--paper-2); }
+  .bitacora-grid{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:clamp(1.2rem,3vw,2rem);
+  }
+  @media (max-width:760px){
+    .bitacora-grid{ grid-template-columns:1fr; }
+  }
+  .specimen{
+    background:var(--paper);
+    border:1px solid var(--ink-30);
+    border-style:dashed;
+    padding:clamp(1.4rem,3vw,2rem);
+    position:relative;
+    transition:transform 0.35s ease, box-shadow 0.35s ease;
+  }
+  .specimen:hover{
+    transform:translateY(-5px) rotate(var(--rot,0deg));
+    box-shadow:0 14px 28px -18px rgba(42,33,24,0.45);
+  }
+  .specimen-top{
+    display:flex; justify-content:space-between; align-items:flex-start;
+    margin-bottom:1.1rem;
+  }
+  .specimen-no{
+    font-family:var(--font-mono);
+    font-size:0.72rem;
+    letter-spacing:0.18em;
+    color:var(--ink-60);
+  }
+  .specimen-icon{ width:28px; height:28px; color:var(--moss); flex-shrink:0; }
+  .specimen h3{
+    font-size:1.7rem;
+    margin-bottom:0.3rem;
+  }
+  .specimen-estado{
+    font-family:var(--font-mono);
+    font-size:0.7rem;
+    letter-spacing:0.12em;
+    text-transform:uppercase;
+    color:var(--moss);
+    margin-bottom:1rem;
+    display:block;
+  }
+  .specimen p{ font-size:0.92rem; color:var(--ink-60); }
+  .specimen p strong{
+    color:var(--ink);
+    font-weight:500;
+    font-style:italic;
+    font-family:var(--font-display);
+  }
+  .stamp{
+    position:absolute; right:1.2rem; bottom:1.2rem;
+    width:62px; height:62px;
+    opacity:0.55;
+  }
+  .stamp text{
+    font-family:var(--font-mono);
+    font-size:6.2px;
+    letter-spacing:1.5px;
+    fill:var(--ink);
+    text-transform:uppercase;
+  }
+  .stamp circle{ fill:none; stroke:var(--ink-30); stroke-width:0.6; }
+
+  .bitacora-note{
+    font-family:var(--font-mono);
+    font-size:0.78rem;
+    color:var(--ink-60);
+    margin-top:clamp(1.5rem,3vw,2.2rem);
+    max-width:60ch;
+  }
+
+  /* ===== GLOSARIO ===== */
+  .glosario-list{ border-top:1px solid var(--ink-30); }
+  .glosario-item{
+    display:grid;
+    grid-template-columns:minmax(140px,220px) 1fr;
+    gap:var(--gap);
+    padding:1.5rem 0;
+    border-bottom:1px solid var(--ink-30);
+  }
+  .glosario-item dt{
+    font-family:var(--font-display);
+    font-style:italic;
+    font-size:1.25rem;
+  }
+  .glosario-item dd{ color:var(--ink-60); font-size:0.95rem; max-width:58ch; }
+  @media (max-width:640px){
+    .glosario-item{ grid-template-columns:1fr; gap:0.5rem; }
+  }
+
+  /* ===== MARCO ===== */
+  .marco{ background:var(--paper-2); }
+  .marco-inner{ max-width:62ch; }
+  .marco p{ font-size:0.92rem; color:var(--ink-60); }
+  .marco p + p{ margin-top:0.9rem; }
+
+  /* ===== FOOTER ===== */
+  footer{
+    border-top:1px solid var(--ink-30);
+    padding:clamp(2rem,5vw,3rem) 0;
+  }
+  .footer-row{
+    display:flex; flex-wrap:wrap; gap:1.5rem;
+    justify-content:space-between; align-items:center;
+  }
+  .footer-links{
+    display:flex; gap:1.6rem;
+    font-family:var(--font-mono);
+    font-size:0.72rem;
+    letter-spacing:0.14em;
+    text-transform:uppercase;
+  }
+  .footer-links a{ border-bottom:1px solid transparent; padding-bottom:0.25rem; transition:border-color 0.25s ease, color 0.25s ease; }
+  .footer-links a:hover{ color:var(--clay); border-color:var(--clay); }
+  .footer-meta{
+    font-family:var(--font-mono);
+    font-size:0.7rem;
+    color:var(--ink-60);
+    letter-spacing:0.08em;
+  }
+a{
+  color: inherit;
+  text-decoration: none;
+}
+</style>
+</head>
+<body>
+
+<header>
+  <nav class="nav container">
+    <div class="wordmark">MALEZA</div>
+    <div class="nav-links">
+      <a href="#pilares">Filosofía</a>
+      <a href="#bitacora">Bitácora</a>
+      <a href="#glosario">Glosario</a>
+      <a class="ig" href="https://www.instagram.com/maleza_arg/" target="_blank" rel="noopener">Instagram ↗</a>
+    </div>
+  </nav>
+</header>
+
+<main>
+
+  <!-- HERO -->
+  <section class="hero container">
+    <div>
+      <span class="eyebrow">Buenos Aires, Argentina</span>
+      <h1>Lo que pasa <em>bajo tierra</em>, también nos pasa.</h1>
+      <p class="lead">
+        Maleza documenta el cultivo consciente de cannabis desde tres lugares que casi nunca se piensan juntos:
+        el suelo, el sistema endocannabinoide y la cultura que rodea su uso.
+        Sin lenguaje comercial. Sin promesas terapéuticas. Solo lo que se observa, se estudia y se registra.
+      </p>
+      <div class="cta-row">
+        <a href="#bitacora">Ver bitácora de cultivo</a>
+        <a href="https://www.instagram.com/maleza_arg/" target="_blank" rel="noopener">Seguir en Instagram</a>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- PILARES -->
+  <section id="pilares" class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">Tres ejes de trabajo — Año 1</span>
+      <h2>Por dónde miramos</h2>
+    </div>
+
+    <div class="pilares-grid reveal">
+      <article class="pilar">
+        <span class="eyebrow">SV — Suelo</span>
+        <h3>Suelo vivo</h3>
+        <p>
+          La tierra como organismo, no como soporte. Lo que pasa en la microbiología y la
+          materia orgánica del sustrato define, en gran parte, lo que la planta puede
+          ofrecer después.
+        </p>
+      </article>
+      <article class="pilar">
+        <span class="eyebrow">SEC — Sistema</span>
+        <h3>Sistema endocannabinoide y cannabis</h3>
+        <p>
+          El puente entre la planta y el cuerpo. Receptores, cannabinoides y terpenos
+          explicados desde la fisiología, sin atajos ni promesas.
+        </p>
+      </article>
+      <article class="pilar">
+        <span class="eyebrow">CC — Cultura</span>
+        <h3>Cultura del cuidado</h3>
+        <p>
+          Cómo se habla, se cultiva y se acompaña el uso de cannabis sin estigma.
+          Marco legal, prácticas y comunidad alrededor del cuidado consciente.
+        </p>
+      </article>
+    </div>
+  </section>
+
+  <!-- BITÁCORA -->
+  <section id="bitacora" class="bitacora">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="eyebrow">Bitácora de cultivo — Temporada 2025/26</span>
+        <h2>Cuatro genéticas en seguimiento</h2>
+        <p class="lead">
+          Cuatro variedades de bancos de semillas argentinos, cultivadas en interior bajo
+          el mismo sistema de suelo vivo. Cada ficha se actualiza con lo que va pasando:
+          qué se hizo y por qué.
+        </p>
+      </div>
+
+      <div class="bitacora-grid">
+
+        <article class="specimen reveal" style="--rot:-0.6deg">
+          <div class="specimen-top">
+            <span class="specimen-no">N.º 01</span>
+            <svg class="specimen-icon" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <path d="M16,28 V14" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+              <path d="M16,18 C11,17 7,14 6,9" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+              <path d="M16,15 C21,14 25,11 26,6" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <h3>Polaris</h3>
+          <span class="specimen-estado">Estado: floración — [completar semana]</span>
+          <p><strong>Acción:</strong> ajuste del pH de riego a 6.3 durante la última semana.
+          <strong>Razón:</strong> la genética mostró señales de bloqueo de hierro, típico de
+          sustratos vivos con pH elevado.</p>
+          <svg class="stamp" viewBox="0 0 60 60" aria-hidden="true">
+            <circle cx="30" cy="30" r="27"/>
+            <path id="circlePath01" d="M 30,30 m -22,0 a 22,22 0 1,1 44,0 a 22,22 0 1,1 -44,0" fill="none"/>
+            <text><textPath href="#circlePath01" startOffset="2%">MALEZA · BUENOS AIRES · CULTIVO 2026 · </textPath></text>
+          </svg>
+        </article>
+
+        <article class="specimen reveal" style="--rot:0.5deg">
+          <div class="specimen-top">
+            <span class="specimen-no">N.º 02</span>
+            <svg class="specimen-icon" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <path d="M16,28 V14" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+              <path d="M16,18 C11,17 7,14 6,9" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+              <path d="M16,15 C21,14 25,11 26,6" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <h3>Phantom Ice</h3>
+          <span class="specimen-estado">Estado: floración — [completar semana]</span>
+          <p><strong>Acción:</strong> poda de hojas bajeras al inicio de floración.
+          <strong>Razón:</strong> mejorar la circulación de aire y dirigir energía hacia
+          los sitios florales superiores.</p>
+          <svg class="stamp" viewBox="0 0 60 60" aria-hidden="true">
+            <circle cx="30" cy="30" r="27"/>
+            <path id="circlePath02" d="M 30,30 m -22,0 a 22,22 0 1,1 44,0 a 22,22 0 1,1 -44,0" fill="none"/>
+            <text><textPath href="#circlePath02" startOffset="2%">MALEZA · BUENOS AIRES · CULTIVO 2026 · </textPath></text>
+          </svg>
+        </article>
+
+        <article class="specimen reveal" style="--rot:0.4deg">
+          <div class="specimen-top">
+            <span class="specimen-no">N.º 03</span>
+            <svg class="specimen-icon" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <path d="M16,28 V14" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+              <path d="M16,18 C11,17 7,14 6,9" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+              <path d="M16,15 C21,14 25,11 26,6" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <h3>Fancy Gummy</h3>
+          <span class="specimen-estado">Estado: vegetativo — [completar semana]</span>
+          <p><strong>Acción:</strong> incorporación de té de humus como riego foliar.
+          <strong>Razón:</strong> reforzar la actividad microbiana del sustrato antes del
+          cambio de fotoperíodo.</p>
+          <svg class="stamp" viewBox="0 0 60 60" aria-hidden="true">
+            <circle cx="30" cy="30" r="27"/>
+            <path id="circlePath03" d="M 30,30 m -22,0 a 22,22 0 1,1 44,0 a 22,22 0 1,1 -44,0" fill="none"/>
+            <text><textPath href="#circlePath03" startOffset="2%">MALEZA · BUENOS AIRES · CULTIVO 2026 · </textPath></text>
+          </svg>
+        </article>
+
+        <article class="specimen reveal" style="--rot:-0.4deg">
+          <div class="specimen-top">
+            <span class="specimen-no">N.º 04</span>
+            <svg class="specimen-icon" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <path d="M16,28 V14" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+              <path d="M16,18 C11,17 7,14 6,9" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+              <path d="M16,15 C21,14 25,11 26,6" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <h3>Guaraní</h3>
+          <span class="specimen-estado">Estado: vegetativo — [completar semana]</span>
+          <p><strong>Acción:</strong> registro fotográfico semanal del desarrollo de tricomas.
+          <strong>Razón:</strong> cruzar esos datos con el perfil de terpenos esperado para
+          esta genética.</p>
+          <svg class="stamp" viewBox="0 0 60 60" aria-hidden="true">
+            <circle cx="30" cy="30" r="27"/>
+            <path id="circlePath04" d="M 30,30 m -22,0 a 22,22 0 1,1 44,0 a 22,22 0 1,1 -44,0" fill="none"/>
+            <text><textPath href="#circlePath04" startOffset="2%">MALEZA · BUENOS AIRES · CULTIVO 2026 · </textPath></text>
+          </svg>
+        </article>
+
+      </div>
+
+      <p class="bitacora-note reveal">
+        * Genéticas de bancos de semillas argentinos (Genéticas Arkham, Mamua Seeds,
+        Dani RKiemargentina, Yacare Genetics). Los campos entre [corchetes] se actualizan
+        ficha por ficha a medida que avanza el cultivo.
+      </p>
+    </div>
+  </section>
+
+  <!-- GLOSARIO -->
+  <section id="glosario" class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">Información clave</span>
+      <h2>Antes de seguir leyendo</h2>
+    </div>
+
+    <dl class="glosario-list reveal">
+      <div class="glosario-item">
+        <dt>Sistema endocannabinoide</dt>
+        <dd>Red de receptores y moléculas propias del cuerpo que regula procesos como el
+        sueño, el apetito, el dolor y el estado de ánimo. El cannabis interactúa con esta
+        red — no la crea.</dd>
+      </div>
+      <div class="glosario-item">
+        <dt>Fitocannabinoides</dt>
+        <dd>Compuestos producidos por la planta de cannabis (THC, CBD, CBG, entre otros)
+        capaces de interactuar con el sistema endocannabinoide humano.</dd>
+      </div>
+      <div class="glosario-item">
+        <dt>Terpenos</dt>
+        <dd>Compuestos aromáticos presentes en el cannabis y en muchas otras plantas.
+        Influyen en el aroma, el sabor y, posiblemente, en cómo se percibe cada genética.</dd>
+      </div>
+      <div class="glosario-item">
+        <dt>Suelo vivo</dt>
+        <dd>Sistema de cultivo donde microorganismos, materia orgánica y raíces interactúan
+        de forma activa, en lugar de depender solo de fertilización mineral aislada.</dd>
+      </div>
+      <div class="glosario-item">
+        <dt>REPROCANN</dt>
+        <dd>Registro del Programa de Cannabis del Ministerio de Salud de Argentina, que
+        habilita el autocultivo y la tenencia de cannabis para uso medicinal, terapéutico
+        y/o paliativo del dolor.</dd>
+      </div>
+    </dl>
+  </section>
+
+  <!-- MARCO -->
+  <section class="marco">
+    <div class="container marco-inner reveal">
+      <span class="eyebrow">Marco</span>
+      <p>
+        En Argentina, el cultivo y el uso medicinal de cannabis están regulados por la
+        Ley 27.350 y el Programa REPROCANN.
+      </p>
+      <p>
+        Este espacio tiene fines documentales y educativos: no constituye indicación
+        médica ni reemplaza la consulta con un profesional de la salud.
+      </p>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="container footer-row">
+    <div class="wordmark">Maleza</div>
+    <div class="footer-links">
+      <a href="https://www.instagram.com/maleza_arg/" target="_blank" rel="noopener">Instagram</a>
+      <a href="#pilares">Filosofía</a>
+      <a href="#bitacora">Bitácora</a>
+    </div>
+    <div class="footer-meta">© 2026 · Buenos Aires, Argentina</div>
+  </div>
+</footer>
+
+<script>
+  // reveal-on-scroll
+  if ('IntersectionObserver' in window){
+    const els = document.querySelectorAll('.reveal');
+    const io = new IntersectionObserver((entries)=>{
+      entries.forEach(e=>{
+        if(e.isIntersecting){
+          e.target.classList.add('is-visible');
+          io.unobserve(e.target);
+        }
+      });
+    }, { threshold:0.15 });
+    els.forEach(el=> io.observe(el));
+  } else {
+    document.querySelectorAll('.reveal').forEach(el=> el.classList.add('is-visible'));
+  }
+</script>
+
+</body>
+</html>
