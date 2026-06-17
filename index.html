@@ -265,77 +265,6 @@
     .pilar:first-child{ border-top:none; }
   }
 
-  /* ===== BITÁCORA ===== */
-  .bitacora{ background:var(--paper-2); }
-  .bitacora-grid{
-    display:grid;
-    grid-template-columns:repeat(2,1fr);
-    gap:clamp(1.2rem,3vw,2rem);
-  }
-  @media (max-width:760px){
-    .bitacora-grid{ grid-template-columns:1fr; }
-  }
-  .specimen{
-    background:var(--paper);
-    border:1px solid var(--ink-30);
-    border-style:dashed;
-    padding:clamp(1.4rem,3vw,2rem);
-    position:relative;
-    transition:transform 0.35s ease, box-shadow 0.35s ease;
-  }
-  .specimen:hover{
-    transform:translateY(-5px) rotate(var(--rot,0deg));
-    box-shadow:0 14px 28px -18px rgba(42,33,24,0.45);
-  }
-  .specimen-top{
-    display:flex; justify-content:space-between; align-items:flex-start;
-    margin-bottom:1.1rem;
-  }
-  .specimen-no{
-    font-family:var(--font-mono);
-    font-size:0.72rem;
-    letter-spacing:0.18em;
-    color:var(--ink-60);
-  }
-  .specimen-icon{ width:28px; height:28px; color:var(--moss); flex-shrink:0; }
-  .specimen h3{ font-size:1.7rem; margin-bottom:0.3rem; }
-  .specimen-estado{
-    font-family:var(--font-mono);
-    font-size:0.7rem;
-    letter-spacing:0.12em;
-    text-transform:uppercase;
-    color:var(--moss);
-    margin-bottom:1rem;
-    display:block;
-  }
-  .specimen p{ font-size:0.92rem; color:var(--ink-60); }
-  .specimen p strong{
-    color:var(--ink);
-    font-weight:500;
-    font-style:italic;
-    font-family:var(--font-display);
-  }
-  .stamp{
-    position:absolute; right:1.2rem; bottom:1.2rem;
-    width:62px; height:62px;
-    opacity:0.55;
-  }
-  .stamp text{
-    font-family:var(--font-mono);
-    font-size:6.2px;
-    letter-spacing:1.5px;
-    fill:var(--ink);
-    text-transform:uppercase;
-  }
-  .stamp circle{ fill:none; stroke:var(--ink-30); stroke-width:0.6; }
-  .bitacora-note{
-    font-family:var(--font-mono);
-    font-size:0.78rem;
-    color:var(--ink-60);
-    margin-top:clamp(1.5rem,3vw,2.2rem);
-    max-width:60ch;
-  }
-
   /* ===== GLOSARIO ===== */
   .glosario-list{ border-top:1px solid var(--ink-30); }
   .glosario-item{
@@ -397,7 +326,6 @@
       <a href="#columnas">Medicina</a>
       <a href="#columnas">Cultivo</a>
       <a href="#columnas">Bienestar</a>
-      <a href="#bitacora">Bitácora</a>
       <a href="#glosario">Glosario</a>
       <a class="ig" href="https://www.instagram.com/maleza_arg/" target="_blank" rel="noopener">Instagram ↗</a>
     </div>
@@ -417,7 +345,6 @@
         Sin lenguaje comercial. Sin promesas terapéuticas. Solo lo que se observa, se estudia y se registra.
       </p>
       <div class="cta-row">
-        <a href="#bitacora">Ver bitácora de cultivo</a>
         <a href="https://www.instagram.com/maleza_arg/" target="_blank" rel="noopener">Seguir en Instagram</a>
       </div>
     </div>
@@ -555,8 +482,6 @@
     </div>
   </section>
 
-  <!-- BITÁCORA -->
-  <section id="bitacora" class="bitacora">
     <div class="container">
       <div class="section-head reveal">
         <span class="eyebrow">Bitácora de cultivo — Temporada 2025/26</span>
@@ -568,7 +493,6 @@
         </p>
       </div>
 
-      <div class="bitacora-grid">
 
         <article class="specimen reveal" style="--rot:-0.6deg">
           <div class="specimen-top">
@@ -656,7 +580,6 @@
 
       </div>
 
-      <p class="bitacora-note reveal">
         * Genéticas de bancos de semillas argentinos (Genéticas Arkham, Mamua Seeds,
         Dani RKiemargentina, Yacare Genetics). Los campos entre [corchetes] se actualizan
         ficha por ficha a medida que avanza el cultivo.
@@ -713,7 +636,6 @@
       <a href="#columnas">Medicina</a>
       <a href="#columnas">Cultivo</a>
       <a href="#columnas">Bienestar</a>
-      <a href="#bitacora">Bitácora</a>
     </div>
     <div class="footer-meta">© 2026 · Buenos Aires, Argentina</div>
   </div>
