@@ -398,6 +398,75 @@
     color: var(--ink-50);
   }
 
+
+  /* ── MODAL DONACIÓN ── */
+  .modal-overlay {
+    display: none;
+    position: fixed; inset: 0; z-index: 999;
+    background: rgba(10,10,10,0.7);
+    align-items: center; justify-content: center;
+  }
+  .modal-overlay.open { display: flex; }
+  .modal {
+    background: #FFFFFF;
+    border-top: 3px solid #3D4E1E;
+    padding: 2.5rem;
+    max-width: 380px; width: 90%;
+    position: relative;
+  }
+  .modal-titulo {
+    font-family: 'Jost', sans-serif;
+    font-weight: 700; font-size: 1rem;
+    letter-spacing: 0.1em; text-transform: uppercase;
+    color: #0A0A0A; margin-bottom: 1.8rem;
+  }
+  .modal-fila {
+    margin-bottom: 1.4rem;
+  }
+  .modal-label {
+    font-family: 'Jost', sans-serif;
+    font-size: 0.58rem; font-weight: 500;
+    letter-spacing: 0.2em; text-transform: uppercase;
+    color: rgba(10,10,10,0.45); display: block;
+    margin-bottom: 0.35rem;
+  }
+  .modal-valor {
+    font-family: 'Jost', sans-serif;
+    font-size: 0.95rem; font-weight: 500;
+    color: #0A0A0A; letter-spacing: 0.02em;
+    word-break: break-all;
+  }
+  .modal-valor.mono {
+    font-size: 0.88rem; letter-spacing: 0.06em;
+    color: #3D4E1E;
+  }
+  .modal-divider {
+    border: none; border-top: 1px solid rgba(10,10,10,0.1);
+    margin: 1.2rem 0;
+  }
+  .modal-nota {
+    font-family: 'Nunito', sans-serif;
+    font-size: 0.75rem; color: rgba(10,10,10,0.45);
+    line-height: 1.6; margin-bottom: 1.8rem;
+  }
+  .modal-cerrar {
+    font-family: 'Jost', sans-serif;
+    font-size: 0.62rem; font-weight: 700;
+    letter-spacing: 0.14em; text-transform: uppercase;
+    background: #0A0A0A; color: #FFFFFF;
+    border: none; padding: 0.75rem 2rem;
+    cursor: pointer; width: 100%;
+    transition: background 0.2s;
+  }
+  .modal-cerrar:hover { background: #3D4E1E; }
+  .modal-x {
+    position: absolute; top: 1rem; right: 1.2rem;
+    font-family: 'Jost', sans-serif;
+    font-size: 1.2rem; font-weight: 300;
+    color: rgba(10,10,10,0.35); cursor: pointer;
+    background: none; border: none; line-height: 1;
+  }
+  .modal-x:hover { color: #0A0A0A; }
 </style>
 </head>
 <body>
@@ -621,7 +690,7 @@
       <button class="donar-monto" onclick="document.querySelectorAll('.donar-monto').forEach(b=>b.classList.remove('active')); this.classList.add('active')">$2.000</button>
       <button class="donar-monto" onclick="document.querySelectorAll('.donar-monto').forEach(b=>b.classList.remove('active')); this.classList.add('active')">Otro monto</button>
     </div>
-    <button class="btn-donar-grande">Colaborar con Maleza →</button>
+    <button class="btn-donar-grande" onclick="abrirModal()">Colaborar con Maleza →</button>
   </section>
 
   <!-- GLOSARIO -->
@@ -683,6 +752,16 @@
 </footer>
 
 <script>
+  function abrirModal() {
+    document.getElementById('modalDonar').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function cerrarModal() {
+    document.getElementById('modalDonar').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+  document.addEventListener('keydown', e => { if(e.key === 'Escape') cerrarModal(); });
+
   if ('IntersectionObserver' in window) {
     const io = new IntersectionObserver(entries => {
       entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
@@ -692,6 +771,44 @@
     document.querySelectorAll('.reveal').forEach(el => el.classList.add('in'));
   }
 </script>
+
+
+<!-- MODAL DONACIÓN -->
+<div class="modal-overlay" id="modalDonar" onclick="if(event.target===this)cerrarModal()">
+  <div class="modal">
+    <button class="modal-x" onclick="cerrarModal()">×</button>
+    <div class="modal-titulo">Colaborar con Maleza</div>
+
+    <div class="modal-fila">
+      <span class="modal-label">Titular</span>
+      <span class="modal-valor">GIRARD MARIA FERNANDA</span>
+    </div>
+
+    <div class="modal-fila">
+      <span class="modal-label">CBU</span>
+      <span class="modal-valor mono">0110085330008506500315</span>
+    </div>
+
+    <div class="modal-fila">
+      <span class="modal-label">Alias</span>
+      <span class="modal-valor mono">MALEZA.REVISTA</span>
+    </div>
+
+    <div class="modal-fila">
+      <span class="modal-label">Banco</span>
+      <span class="modal-valor">Banco Nación Argentina</span>
+    </div>
+
+    <hr class="modal-divider">
+
+    <p class="modal-nota">
+      Podés transferir desde cualquier banco o billetera virtual usando el CBU o el alias.
+      Cada aporte sostiene la independencia editorial de Maleza.
+    </p>
+
+    <button class="modal-cerrar" onclick="cerrarModal()">Cerrar</button>
+  </div>
+</div>
 
 </body>
 </html>
