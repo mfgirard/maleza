@@ -3,568 +3,693 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Maleza — Cultivo consciente, suelo vivo y sistema endocannabinoide</title>
-<meta name="description" content="Maleza documenta el cultivo consciente de cannabis: suelo vivo, sistema endocannabinoide y cultura del cuidado. Sin lenguaje comercial, sin promesas terapéuticas.">
+<title>Maleza — Cultivo consciente</title>
+<meta name="description" content="Maleza documenta el cultivo consciente de cannabis: salud, cultivo, bienestar y comunidad.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Montserrat:wght@300;400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Jost:wght@400;500;700&family=Nunito:wght@300;400;600&display=swap" rel="stylesheet">
 <style>
 
-  /* ===== TOKENS ===== */
-  :root{
-    --paper:    #F4EFE5;
-    --paper-2:  #EBE2D1;
-    --ink:      #2A2118;
-    --ink-60:   rgba(42,33,24,0.62);
-    --ink-30:   rgba(42,33,24,0.22);
-    --moss:     #5B6B45;
-    --clay:     #B5613E;
-
-    --font-display: 'Cormorant Garamond', Georgia, serif;
-    --font-body:    'Montserrat', -apple-system, sans-serif;
-    --font-mono:    'Space Mono', 'Courier New', monospace;
-
-    --container: 1140px;
-    --gap: clamp(1.5rem, 4vw, 3rem);
+  :root {
+    --blanco:   #FFFFFF;
+    --crema:    #F4F4F4;
+    --crema-2:  #EBEBEB;
+    --ink:      #0A0A0A;
+    --ink-50:   rgba(10,10,10,0.52);
+    --ink-20:   rgba(10,10,10,0.12);
+    --clay:     #3D4E1E;
+    --moss:     #3D4E1E;
+    --arena:    #3D4E1E;
+    --font-display: 'Jost', sans-serif;
+    --font-body:    'Nunito', sans-serif;
+    --font-mono:    'Jost', sans-serif;
+    --max: 1080px;
   }
 
-  /* ===== RESET ===== */
-  *{ box-sizing:border-box; margin:0; padding:0; }
-  html{ scroll-behavior:smooth; }
-  @media (prefers-reduced-motion: reduce){
-    html{ scroll-behavior:auto; }
-    *{ animation-duration:0.001ms !important; transition-duration:0.001ms !important; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: var(--font-body);
+    font-weight: 300;
+    color: var(--ink);
+    background: var(--blanco);
+    -webkit-font-smoothing: antialiased;
+    line-height: 1.6;
   }
-  body{
-    font-family:var(--font-body);
-    font-weight:300;
-    color:var(--ink);
-    background:var(--paper);
-    line-height:1.65;
-    -webkit-font-smoothing:antialiased;
-  }
-  img,svg{ display:block; max-width:100%; }
-  a{ color:inherit; text-decoration:none; }
-  .container{
-    max-width:var(--container);
-    margin:0 auto;
-    padding:0 clamp(1.25rem, 4vw, 2.5rem);
-  }
-  .eyebrow{
-    font-family:var(--font-mono);
-    font-size:0.72rem;
-    letter-spacing:0.22em;
-    text-transform:uppercase;
-    color:var(--moss);
-    display:block;
-    margin-bottom:0.85rem;
-  }
-  h1,h2,h3{
-    font-family:var(--font-display);
-    font-weight:500;
-    line-height:1.15;
-    letter-spacing:-0.01em;
-  }
-  .lead{
-    color:var(--ink-60);
-    font-weight:300;
-    max-width:42ch;
-  }
+  a { color: inherit; text-decoration: none; }
+  img { display: block; max-width: 100%; }
+  .container { max-width: var(--max); margin: 0 auto; padding: 0 1.5rem; }
 
-  /* ===== REVEAL ON SCROLL ===== */
-  .reveal{
-    opacity:0;
-    transform:translateY(18px);
-    transition:opacity 0.7s ease, transform 0.7s ease;
-  }
-  .reveal.is-visible{ opacity:1; transform:translateY(0); }
+  /* ── REVEAL ── */
+  .reveal { opacity: 0; transform: translateY(14px); transition: opacity .65s ease, transform .65s ease; }
+  .reveal.in { opacity: 1; transform: none; }
 
-  /* ===== HEADER ===== */
-  header{
-    position:sticky; top:0; z-index:50;
-    background:rgba(244,239,229,0.86);
-    backdrop-filter:blur(6px);
-    border-bottom:1px solid var(--ink-30);
-  }
-  .nav{
-    display:flex; align-items:center; justify-content:space-between;
-    padding:1.1rem clamp(1.25rem, 4vw, 2.5rem);
-  }
-
-  /* ── TU VERSIÓN DEL WORDMARK (Futura, uppercase, 3rem) ── */
-  .wordmark{
-    font-family:"futura", sans-serif;
-    font-size: 3rem;
-    font-weight:700;
-    letter-spacing: 0.06em;
+  /* ── TOPBAR ── */
+  .topbar {
+    border-bottom: 1px solid var(--ink-20);
+    padding: 0.55rem 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: var(--font-mono);
+    font-size: 0.6rem;
+    letter-spacing: 0.18em;
     text-transform: uppercase;
+    color: var(--ink-50);
+  }
+  .topbar a { color: var(--clay); }
+
+  /* ── HEADER ── */
+  header {
+    position: sticky; top: 0; z-index: 100;
+    background: rgba(255,255,255,0.97);
+    backdrop-filter: blur(8px);
+    border-bottom: 2px solid var(--ink);
+  }
+  .header-inner {
+    max-width: var(--max);
+    margin: 0 auto;
+    padding: 0 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    height: 64px;
+  }
+  .wordmark {
+    font-family: "futura", "Trebuchet MS", sans-serif;
+    font-size: 2rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    flex-shrink: 0;
+  }
+  .main-nav {
+    display: flex;
+    gap: 0;
+    align-items: center;
+  }
+  .main-nav a {
+    font-family: var(--font-mono);
+    font-size: 0.62rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    padding: 0 1.1rem;
+    height: 64px;
+    display: flex;
+    align-items: center;
+    border-bottom: 2px solid transparent;
+    margin-bottom: -2px;
+    transition: border-color 0.2s, color 0.2s;
+  }
+  .main-nav a:hover { border-color: var(--clay); color: var(--clay); }
+  .btn-donar {
+    font-family: var(--font-mono);
+    font-size: 0.6rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    background: var(--clay);
+    color: white;
+    padding: 0.55rem 1.2rem;
+    border: none;
+    cursor: pointer;
+    transition: background 0.2s;
+    flex-shrink: 0;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+  }
+  .btn-donar:hover { background: var(--ink); color: white; }
+  @media (max-width: 720px) {
+    .main-nav { display: none; }
+    .wordmark { font-size: 1.5rem; }
   }
 
-  .nav-links{
-    display:flex; gap:clamp(1rem, 3vw, 2.2rem); align-items:center;
-    font-family:var(--font-mono);
-    font-size:0.7rem;
-    letter-spacing:0.14em;
-    text-transform:uppercase;
+  /* ── HERO REVISTA ── */
+  .hero-revista {
+    border-bottom: 1px solid var(--ink-20);
+    padding: 3rem 0 2.5rem;
   }
-  .nav-links a{
-    padding-bottom:0.35rem;
-    border-bottom:1px solid transparent;
-    transition:border-color 0.25s ease, color 0.25s ease;
+  .hero-grid {
+    display: grid;
+    grid-template-columns: 1fr 1px 1fr 1px 1fr;
+    gap: 0;
   }
-  .nav-links a:hover{ border-color:var(--clay); color:var(--clay); }
-  .nav-links .ig{ color:var(--clay); }
-  @media (max-width:640px){
-    .nav-links a:not(.ig){ display:none; }
-    .nav-links{ gap:0; }
+  .hero-sep { background: var(--ink-20); }
+  .hero-col { padding: 0 2rem; }
+  .hero-col:first-child { padding-left: 0; }
+  .hero-col:last-child { padding-right: 0; }
+  .hero-col.featured { grid-column: 1; }
+
+  .art-label {
+    font-family: var(--font-mono);
+    font-size: 0.58rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--clay);
+    display: block;
+    margin-bottom: 0.6rem;
+  }
+  .art-img-box {
+    width: 100%;
+    aspect-ratio: 3/2;
+    background: var(--crema-2);
+    border: 1px dashed var(--ink-20);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-mono);
+    font-size: 0.58rem;
+    letter-spacing: 0.1em;
+    color: var(--ink-50);
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+  }
+  .hero-col.featured .art-img-box { aspect-ratio: 4/3; margin-bottom: 1.2rem; }
+  .art-title {
+    font-family: var(--font-display);
+    font-weight: 500;
+    line-height: 1.15;
+    letter-spacing: -0.01em;
+  }
+  .hero-col.featured .art-title { font-size: 2rem; }
+  .hero-col:not(.featured) .art-title { font-size: 1.3rem; }
+  .art-bajada {
+    font-size: 0.85rem;
+    color: var(--ink-50);
+    margin-top: 0.5rem;
+    line-height: 1.6;
+  }
+  .art-leer {
+    font-family: var(--font-mono);
+    font-size: 0.58rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--clay);
+    margin-top: 0.8rem;
+    display: inline-block;
+    border-bottom: 1px solid var(--clay);
+    padding-bottom: 0.2rem;
+  }
+  @media (max-width: 860px) {
+    .hero-grid { grid-template-columns: 1fr; }
+    .hero-sep { display: none; }
+    .hero-col { padding: 1.5rem 0; border-bottom: 1px solid var(--ink-20); }
+    .hero-col:last-child { border-bottom: none; }
   }
 
-  /* ===== HERO (tu versión: columna única, centrado) ===== */
-  .hero{
-    padding:clamp(3rem,8vw,6rem) 0 clamp(2.5rem,6vw,4.5rem);
-    display:grid;
-    grid-template-columns: 1fr;
-    gap:var(--gap);
-    align-items:center;
-    justify-items:center;
-    text-align:center;
+  /* ── SECCIONES ── */
+  .seccion { padding: 3rem 0; border-top: 2px solid var(--ink); }
+  .sec-header {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    margin-bottom: 2rem;
+    gap: 1rem;
   }
-  .hero h1{
-    font-size:clamp(2.4rem, 5.6vw, 4.2rem);
-    margin-bottom:1.1rem;
+  .sec-titulo {
+    font-family: var(--font-display);
+    font-size: 2rem;
+    font-weight: 500;
+    font-style: italic;
+    letter-spacing: -0.01em;
   }
-  .hero h1 em{
-    font-style:italic;
-    color:var(--clay);
+  .sec-ver {
+    font-family: var(--font-mono);
+    font-size: 0.58rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--ink-50);
+    border-bottom: 1px solid var(--ink-20);
+    padding-bottom: 0.2rem;
+    white-space: nowrap;
+    transition: color 0.2s;
   }
-  .hero .lead{
-    margin-bottom:2rem;
-    font-size:1.02rem;
-    max-width:52ch;
-    margin:0 auto 2rem;
-  }
-  .cta-row{
-    display:flex;
-    flex-wrap:wrap;
-    gap:1.6rem;
-    justify-content:center;
-    font-family:var(--font-mono);
-    font-size:0.75rem;
-    letter-spacing:0.14em;
-    text-transform:uppercase;
-  }
-  .cta-row a{
-    border-bottom:1px solid var(--ink);
-    padding-bottom:0.3rem;
-    transition:color 0.25s ease, border-color 0.25s ease;
-  }
-  .cta-row a:hover{ color:var(--moss); border-color:var(--moss); }
+  .sec-ver:hover { color: var(--clay); border-color: var(--clay); }
 
-  /* ===== SECTION SPACING ===== */
-  section{ padding:clamp(3rem,7vw,5.5rem) 0; }
-  .section-head{ max-width:46ch; margin-bottom:clamp(2rem,5vw,3.5rem); }
-  .section-head h2{ font-size:clamp(1.9rem,4vw,2.6rem); }
-
-  /* ===== COLUMNAS REVISTA ===== */
-  .columnas-nav{
-    display:flex;
-    gap:0;
-    border-bottom:2px solid var(--ink);
-    margin-bottom:clamp(2rem,5vw,3.5rem);
+  .notas-grid {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr 1fr;
+    gap: 0;
+    border-top: 1px solid var(--ink-20);
+    border-left: 1px solid var(--ink-20);
   }
-  .col-tab{
-    font-family:var(--font-mono);
-    font-size:0.72rem;
-    letter-spacing:0.18em;
-    text-transform:uppercase;
-    padding:0.75rem 1.6rem 0.65rem;
-    border-right:1px solid var(--ink-30);
-    color:var(--ink-60);
-    cursor:pointer;
-    transition:background 0.2s ease, color 0.2s ease;
-    background:transparent;
-    border-top:none; border-left:none; border-bottom:none;
-    font-family:var(--font-mono);
+  .nota {
+    border-right: 1px solid var(--ink-20);
+    border-bottom: 1px solid var(--ink-20);
+    padding: 1.4rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+    transition: background 0.2s;
   }
-  .col-tab:first-child{ border-left:1px solid var(--ink-30); }
-  .col-tab.active{ background:var(--ink); color:var(--paper); }
-  .col-tab:hover:not(.active){ background:var(--paper-2); color:var(--ink); }
-
-  .columna-panel{ display:none; }
-  .columna-panel.active{ display:block; }
-
-  /* grilla artículos tipo revista */
-  .revista-grid{
-    display:grid;
-    grid-template-columns:1.5fr 1fr 1fr;
-    gap:0;
-    border-top:1px solid var(--ink-30);
-    border-left:1px solid var(--ink-30);
-  }
-  .art-card{
-    border-right:1px solid var(--ink-30);
-    border-bottom:1px solid var(--ink-30);
-    padding:clamp(1.4rem,3vw,2rem);
-    display:flex;
-    flex-direction:column;
-    gap:0.8rem;
-    transition:background 0.25s ease;
-  }
-  .art-card:hover{ background:var(--paper-2); }
-  .art-card.featured{ grid-row:span 2; }
-  .art-card .eyebrow{ margin-bottom:0; }
-  .art-card h3{ font-size:1.3rem; line-height:1.2; }
-  .art-card.featured h3{ font-size:1.9rem; }
-  .art-card p{ font-size:0.9rem; color:var(--ink-60); line-height:1.6; flex:1; }
-  .art-img{
-    width:100%; aspect-ratio:16/9;
-    background:var(--paper-2);
-    border:1px dashed var(--ink-30);
-    display:flex; align-items:center; justify-content:center;
-    font-family:var(--font-mono); font-size:0.65rem;
-    letter-spacing:0.1em; color:var(--ink-30); text-transform:uppercase;
-    margin-bottom:0.4rem;
-  }
-  .art-card.featured .art-img{ aspect-ratio:4/3; }
-  .art-read{
-    font-family:var(--font-mono);
-    font-size:0.68rem;
-    letter-spacing:0.14em;
-    text-transform:uppercase;
-    color:var(--clay);
-    margin-top:auto;
-    padding-top:0.6rem;
-    border-top:1px solid var(--ink-30);
-  }
-  @media (max-width:860px){
-    .revista-grid{ grid-template-columns:1fr 1fr; }
-    .art-card.featured{ grid-row:span 1; grid-column:span 2; }
-  }
-  @media (max-width:560px){
-    .revista-grid{ grid-template-columns:1fr; }
-    .art-card.featured{ grid-column:span 1; }
+  .nota:hover { background: var(--crema); }
+  .nota.grande { grid-row: span 2; }
+  .nota .art-img-box { margin-bottom: 0; }
+  .nota.grande .art-img-box { aspect-ratio: 4/3; }
+  .nota:not(.grande) .art-img-box { aspect-ratio: 16/9; }
+  .nota .art-title { font-size: 1.25rem; }
+  .nota.grande .art-title { font-size: 1.6rem; }
+  .nota .art-bajada { font-size: 0.82rem; }
+  @media (max-width: 720px) {
+    .notas-grid { grid-template-columns: 1fr; }
+    .nota.grande { grid-row: span 1; }
   }
 
-  /* ===== PILARES ===== */
-  .pilares-grid{
-    display:grid;
-    grid-template-columns:repeat(3,1fr);
-    border-top:1px solid var(--ink-30);
+  /* ── FRANJA DONAR ── */
+  .franja-donar {
+    background: var(--ink);
+    color: white;
+    padding: 3rem 1.5rem;
+    text-align: center;
   }
-  .pilar{
-    padding:clamp(1.6rem,3vw,2.4rem) clamp(1.4rem,3vw,2.2rem);
-    border-left:1px solid var(--ink-30);
-    border-bottom:1px solid var(--ink-30);
+  .franja-donar .eyebrow {
+    font-family: var(--font-mono);
+    font-size: 0.6rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--clay);
+    display: block;
+    margin-bottom: 0.8rem;
   }
-  .pilar:first-child{ border-left:none; }
-  .pilar .eyebrow{ color:var(--clay); }
-  .pilar h3{ font-size:1.5rem; margin-bottom:0.8rem; }
-  .pilar p{ color:var(--ink-60); font-size:0.95rem; }
-  @media (max-width:860px){
-    .pilares-grid{ grid-template-columns:1fr; }
-    .pilar{ border-left:none; }
-    .pilar:first-child{ border-top:none; }
+  .franja-donar h2 {
+    font-family: var(--font-display);
+    font-size: clamp(1.8rem, 4vw, 2.8rem);
+    font-weight: 500;
+    font-style: italic;
+    margin-bottom: 0.8rem;
+    line-height: 1.2;
+  }
+  .franja-donar p {
+    font-size: 0.88rem;
+    color: rgba(255,255,255,0.6);
+    max-width: 44ch;
+    margin: 0 auto 2rem;
+    line-height: 1.7;
+  }
+  .donar-opciones {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  .donar-monto {
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    border: 1px solid rgba(255,255,255,0.25);
+    color: white;
+    padding: 0.7rem 1.4rem;
+    cursor: pointer;
+    transition: background 0.2s, border-color 0.2s;
+    background: transparent;
+  }
+  .donar-monto:hover, .donar-monto.active {
+    background: var(--clay);
+    border-color: var(--clay);
+  }
+  .btn-donar-grande {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    background: var(--clay);
+    color: white;
+    border: none;
+    padding: 0.9rem 2.5rem;
+    cursor: pointer;
+    margin-top: 1.2rem;
+    transition: background 0.2s;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .btn-donar-grande:hover { background: #a5622c; }
+
+  /* ── GLOSARIO ── */
+  .glosario { padding: 3rem 0; border-top: 2px solid var(--ink); background: var(--crema); }
+  .glosario-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0;
+    border-top: 1px solid var(--ink-20);
+    border-left: 1px solid var(--ink-20);
+    margin-top: 2rem;
+  }
+  .glosario-item {
+    border-right: 1px solid var(--ink-20);
+    border-bottom: 1px solid var(--ink-20);
+    padding: 1.4rem;
+  }
+  .glosario-item dt {
+    font-family: var(--font-display);
+    font-style: italic;
+    font-size: 1.2rem;
+    margin-bottom: 0.4rem;
+  }
+  .glosario-item dd { font-size: 0.82rem; color: var(--ink-50); line-height: 1.65; }
+  @media (max-width: 720px) {
+    .glosario-grid { grid-template-columns: 1fr; }
   }
 
-  /* ===== GLOSARIO ===== */
-  .glosario-list{ border-top:1px solid var(--ink-30); }
-  .glosario-item{
-    display:grid;
-    grid-template-columns:minmax(140px,220px) 1fr;
-    gap:var(--gap);
-    padding:1.5rem 0;
-    border-bottom:1px solid var(--ink-30);
-  }
-  .glosario-item dt{
-    font-family:var(--font-display);
-    font-style:italic;
-    font-size:1.25rem;
-  }
-  .glosario-item dd{ color:var(--ink-60); font-size:0.95rem; max-width:58ch; }
-  @media (max-width:640px){
-    .glosario-item{ grid-template-columns:1fr; gap:0.5rem; }
+  /* ── MARCO ── */
+  .marco {
+    padding: 2rem 1.5rem;
+    border-top: 1px solid var(--ink-20);
+    background: var(--crema-2);
+    font-family: var(--font-mono);
+    font-size: 0.65rem;
+    letter-spacing: 0.06em;
+    color: var(--ink-50);
+    text-align: center;
+    line-height: 1.8;
   }
 
-  /* ===== MARCO ===== */
-  .marco{ background:var(--paper-2); }
-  .marco-inner{ max-width:62ch; }
-  .marco p{ font-size:0.92rem; color:var(--ink-60); }
-  .marco p + p{ margin-top:0.9rem; }
-
-  /* ===== FOOTER ===== */
-  footer{
-    border-top:1px solid var(--ink-30);
-    padding:clamp(2rem,5vw,3rem) 0;
+  /* ── FOOTER ── */
+  footer {
+    border-top: 2px solid var(--ink);
+    padding: 2rem 1.5rem;
+    background: var(--blanco);
   }
-  .footer-row{
-    display:flex; flex-wrap:wrap; gap:1.5rem;
-    justify-content:space-between; align-items:center;
+  .footer-inner {
+    max-width: var(--max);
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
   }
-  .footer-links{
-    display:flex; gap:1.6rem;
-    font-family:var(--font-mono);
-    font-size:0.72rem;
-    letter-spacing:0.14em;
-    text-transform:uppercase;
+  .footer-links {
+    display: flex;
+    gap: 1.5rem;
+    font-family: var(--font-mono);
+    font-size: 0.6rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--ink-50);
   }
-  .footer-links a{ border-bottom:1px solid transparent; padding-bottom:0.25rem; transition:border-color 0.25s ease, color 0.25s ease; }
-  .footer-links a:hover{ color:var(--clay); border-color:var(--clay); }
-  .footer-meta{
-    font-family:var(--font-mono);
-    font-size:0.7rem;
-    color:var(--ink-60);
-    letter-spacing:0.08em;
+  .footer-links a:hover { color: var(--clay); }
+  .footer-meta {
+    font-family: var(--font-mono);
+    font-size: 0.58rem;
+    letter-spacing: 0.08em;
+    color: var(--ink-50);
   }
 
 </style>
 </head>
 <body>
 
+<!-- TOPBAR -->
+<div class="topbar">
+  <span>Buenos Aires, Argentina · REPROCANN</span>
+  <a href="#donar">Apoyá Maleza →</a>
+</div>
+
+<!-- HEADER -->
 <header>
-  <nav class="nav container">
-    <div class="wordmark">MALEZA</div>
-    <div class="nav-links">
-      <a href="#columnas">Medicina</a>
-      <a href="#columnas">Cultivo</a>
-      <a href="#columnas">Bienestar</a>
+  <div class="header-inner">
+    <div class="wordmark">Maleza</div>
+    <nav class="main-nav">
+      <a href="#salud">Salud</a>
+      <a href="#cultivo">Cultivo</a>
+      <a href="#bienestar">Bienestar</a>
+      <a href="#comunidad">Comunidad</a>
       <a href="#glosario">Glosario</a>
-      <a class="ig" href="https://www.instagram.com/maleza_arg/" target="_blank" rel="noopener">Instagram ↗</a>
-    </div>
-  </nav>
+    </nav>
+    <a href="#donar" class="btn-donar">Donar</a>
+  </div>
 </header>
 
 <main>
 
-  <!-- HERO (tu versión: sin SVG, columna única, centrado) -->
-  <section class="hero container">
-    <div>
-      <span class="eyebrow">Buenos Aires, Argentina</span>
-      <h1>Lo que pasa <em>bajo tierra</em>, también nos pasa.</h1>
-      <p class="lead">
-        Maleza nace para documentar el cultivo consciente de cannabis desde tres lugares: el suelo vivo, la química de la planta y el sistema endocannabinoide humano.
-        Un espacio donde se observa, se estudia y se registra cómo la tierra, la planta y el cuerpo dialogan.
-      </p>
-      <div class="cta-row">
-<a href="https://www.instagram.com/maleza_arg/" target="_blank" rel="noopener">Seguir en Instagram</a>
+  <!-- HERO TIPO REVISTA -->
+  <section class="hero-revista">
+    <div class="container">
+      <div class="hero-grid">
+
+        <div class="hero-col featured reveal">
+          <span class="art-label">Salud · Destacado</span>
+          <div class="art-img-box">imagen</div>
+          <h1 class="art-title">El sistema endocannabinoide: lo que el cuerpo ya sabía antes de que llegara la planta</h1>
+          <p class="art-bajada">Receptores CB1 y CB2, AEA y 2-AG. El cannabis entra en una red que ya existe — no la inventa.</p>
+          <a href="#" class="art-leer">Leer nota →</a>
+        </div>
+
+        <div class="hero-sep"></div>
+
+        <div class="hero-col reveal">
+          <span class="art-label">Cultivo</span>
+          <div class="art-img-box">imagen</div>
+          <h2 class="art-title">Por qué el sustrato descansado cambia todo lo que pasa después</h2>
+          <p class="art-bajada">Sin período de reposo, la microbiología no alcanza para mediar entre el sustrato y la raíz.</p>
+          <a href="#" class="art-leer">Leer →</a>
+        </div>
+
+        <div class="hero-sep"></div>
+
+        <div class="hero-col reveal">
+          <span class="art-label">Bienestar</span>
+          <div class="art-img-box">imagen</div>
+          <h2 class="art-title">Cultivar como práctica de atención</h2>
+          <p class="art-bajada">El ritmo de observación que requiere el cultivo consciente activa un modo de presencia que cuesta sostener en otros contextos.</p>
+          <a href="#" class="art-leer">Leer →</a>
+        </div>
+
       </div>
     </div>
   </section>
 
-  <!-- COLUMNAS DE REVISTA -->
-  <section id="columnas" class="container">
-    <div class="section-head reveal">
-      <span class="eyebrow">Columnas editoriales — Año 1</span>
-      <h2>Por dónde miramos</h2>
-    </div>
-
-    <div class="columnas-nav reveal" role="tablist" aria-label="Columnas editoriales">
-      <button class="col-tab active" role="tab" aria-selected="true"  aria-controls="panel-medicina"  id="tab-medicina">Medicina</button>
-      <button class="col-tab"        role="tab" aria-selected="false" aria-controls="panel-cultivo"   id="tab-cultivo">Cultivo</button>
-      <button class="col-tab"        role="tab" aria-selected="false" aria-controls="panel-bienestar" id="tab-bienestar">Bienestar</button>
-    </div>
-
-    <!-- MEDICINA -->
-    <div id="panel-medicina" class="columna-panel active reveal" role="tabpanel" aria-labelledby="tab-medicina">
-      <div class="revista-grid">
-        <article class="art-card featured">
-          <div class="art-img">imagen destacada</div>
-          <span class="eyebrow">Medicina · Destacado</span>
-          <h3>El sistema endocannabinoide: lo que el cuerpo ya sabía antes de que llegara la planta</h3>
-          <p>Tenemos receptores CB1 y CB2 distribuidos en el sistema nervioso central y periférico. No están ahí porque fumemos cannabis — están porque producimos nuestros propios cannabinoides. AEA y 2-AG son los principales, y su equilibrio regula procesos que van desde el sueño hasta la respuesta inflamatoria.</p>
-          <span class="art-read">Leer nota →</span>
-        </article>
-        <article class="art-card">
-          <span class="eyebrow">Medicina · Cannabinoides</span>
-          <h3>THC, CBD y los que casi nadie nombra: CBG, CBN, THCV</h3>
-          <p>El perfil completo de fitocannabinoides importa más que el porcentaje de THC solo. Cada compuesto tiene afinidad distinta por los receptores y potencia o matiza el efecto de los demás — efecto entourage.</p>
-          <span class="art-read">Leer nota →</span>
-        </article>
-        <article class="art-card">
-          <span class="eyebrow">Medicina · Deficiencia</span>
-          <h3>Deficiencia clínica endocannabinoide: una hipótesis que gana terreno</h3>
-          <p>La teoría de Russo propone que condiciones como la migraña crónica o la fibromialgia podrían relacionarse con un tono endocannabinoide bajo. Qué dice la evidencia y cuáles son sus límites.</p>
-          <span class="art-read">Leer nota →</span>
-        </article>
-        <article class="art-card">
-          <span class="eyebrow">Medicina · Terpenos</span>
-          <h3>Beta-cariofileno: el único terpeno que actúa como agonista CB2</h3>
-          <p>Lo que eso significa en términos de inflamación y por qué los terpenos no son solo aroma.</p>
-          <span class="art-read">Leer nota →</span>
-        </article>
+  <!-- SALUD -->
+  <section class="seccion" id="salud">
+    <div class="container">
+      <div class="sec-header reveal">
+        <h2 class="sec-titulo">Salud</h2>
+        <a href="#" class="sec-ver">Ver todo →</a>
       </div>
-    </div>
-
-    <!-- CULTIVO -->
-    <div id="panel-cultivo" class="columna-panel reveal" role="tabpanel" aria-labelledby="tab-cultivo">
-      <div class="revista-grid">
-        <article class="art-card featured">
-          <div class="art-img">imagen destacada</div>
-          <span class="eyebrow">Cultivo · Suelo vivo</span>
-          <h3>Por qué el sustrato descansado cambia todo lo que pasa después en la planta</h3>
-          <p>Un suelo vivo necesita tiempo para que hongos, bacterias y microfauna establezcan sus relaciones. Sin ese período de reposo, la actividad microbiana es baja y la planta queda expuesta a bloqueos que no tienen que ver con el pH ni con la dosificación — sino con la ausencia de intermediarios biológicos.</p>
-          <span class="art-read">Leer nota →</span>
+      <div class="notas-grid reveal">
+        <article class="nota grande">
+          <div class="art-img-box">imagen</div>
+          <span class="art-label">Salud · Cannabinoides</span>
+          <h3 class="art-title">THC, CBD y los que casi nadie nombra: CBG, CBN, THCV</h3>
+          <p class="art-bajada">El perfil completo importa más que el porcentaje de THC solo. Cada compuesto tiene afinidad distinta por los receptores y potencia o matiza el efecto de los demás.</p>
+          <a href="#" class="art-leer">Leer nota →</a>
         </article>
-        <article class="art-card">
-          <span class="eyebrow">Cultivo · pH</span>
-          <h3>pH 6.0–6.8: el rango donde viven los nutrientes</h3>
-          <p>Un punto fuera de rango puede bloquear hierro, calcio o boro sin que el sustrato esté deficiente en ninguno de los tres.</p>
-          <span class="art-read">Leer nota →</span>
+        <article class="nota">
+          <span class="art-label">Salud · Terpenos</span>
+          <h3 class="art-title">Beta-cariofileno: el único terpeno que actúa como agonista CB2</h3>
+          <p class="art-bajada">Lo que eso significa en términos de inflamación.</p>
+          <a href="#" class="art-leer">Leer →</a>
         </article>
-        <article class="art-card">
-          <span class="eyebrow">Cultivo · Bioinsumos</span>
-          <h3>Té de humus aireado: cómo prepararlo sin arruinar la microbiología</h3>
-          <p>El proceso de aireación, la dilución y el pH final determinan si el té activa o stresa el sustrato. Paso a paso con harina de alfalfa como fuente de nitrógeno.</p>
-          <span class="art-read">Leer nota →</span>
+        <article class="nota">
+          <span class="art-label">Salud · Deficiencia</span>
+          <h3 class="art-title">Deficiencia clínica endocannabinoide: una hipótesis que gana terreno</h3>
+          <p class="art-bajada">La teoría de Russo y lo que dice la evidencia disponible.</p>
+          <a href="#" class="art-leer">Leer →</a>
         </article>
-        <article class="art-card">
-          <span class="eyebrow">Cultivo · Diagnóstico</span>
-          <h3>Curling de puntas: cuándo es pH, cuándo es EC y cuándo es calor</h3>
-          <p>Un mismo síntoma visual puede tener tres causas distintas. Cómo diagnosticar leyendo el patrón de distribución antes de corregir a ciegas.</p>
-          <span class="art-read">Leer nota →</span>
-        </article>
-      </div>
-    </div>
-
-    <!-- BIENESTAR -->
-    <div id="panel-bienestar" class="columna-panel reveal" role="tabpanel" aria-labelledby="tab-bienestar">
-      <div class="revista-grid">
-        <article class="art-card featured">
-          <div class="art-img">imagen destacada</div>
-          <span class="eyebrow">Bienestar · Cultura del cuidado</span>
-          <h3>Cultivar como práctica de atención: lo que el cuidado de una planta le devuelve a quien cuida</h3>
-          <p>No es metáfora. El ritmo de observación que requiere el cultivo consciente — revisar el sustrato, leer las hojas, registrar lo que cambia — activa un modo de presencia que cuesta sostener en otros contextos.</p>
-          <span class="art-read">Leer nota →</span>
-        </article>
-        <article class="art-card">
-          <span class="eyebrow">Bienestar · Marco legal</span>
-          <h3>REPROCANN en 2026: qué habilita, qué no y qué sigue en gris</h3>
-          <p>Lo que la ley 27.350 y el programa permiten concretamente, y los vacíos que generan incertidumbre para quienes cultivamos en Argentina.</p>
-          <span class="art-read">Leer nota →</span>
-        </article>
-        <article class="art-card">
-          <span class="eyebrow">Bienestar · Sueño</span>
-          <h3>Cannabis, adenosina y el ciclo del sueño: lo que dice la evidencia</h3>
-          <p>El THC puede reducir la latencia del sueño a corto plazo, pero el uso sostenido afecta el sueño REM. Qué se sabe, qué se especula y cómo leer las etiquetas que prometen demasiado.</p>
-          <span class="art-read">Leer nota →</span>
-        </article>
-        <article class="art-card">
-          <span class="eyebrow">Bienestar · Omega</span>
-          <h3>Omega-3, omega-6 y el tono endocannabinoide: la dieta como variable olvidada</h3>
-          <p>El desequilibrio entre ácidos grasos modifica la producción endógena de endocannabinoides. Una variable que casi nunca aparece en las conversaciones sobre cannabis medicinal.</p>
-          <span class="art-read">Leer nota →</span>
+        <article class="nota">
+          <span class="art-label">Salud · Dieta</span>
+          <h3 class="art-title">Omega-3, omega-6 y el tono endocannabinoide</h3>
+          <p class="art-bajada">La variable que casi nunca aparece en las conversaciones sobre cannabis medicinal.</p>
+          <a href="#" class="art-leer">Leer →</a>
         </article>
       </div>
     </div>
   </section>
 
-  <!-- PILARES -->
-  <section id="pilares" class="container">
-    <div class="section-head reveal">
-      <span class="eyebrow">Tres ejes de trabajo — Año 1</span>
-      <h2>Filosofía</h2>
+  <!-- CULTIVO -->
+  <section class="seccion" id="cultivo">
+    <div class="container">
+      <div class="sec-header reveal">
+        <h2 class="sec-titulo">Cultivo</h2>
+        <a href="#" class="sec-ver">Ver todo →</a>
+      </div>
+      <div class="notas-grid reveal">
+        <article class="nota grande">
+          <div class="art-img-box">imagen</div>
+          <span class="art-label">Cultivo · Suelo vivo</span>
+          <h3 class="art-title">Por qué el sustrato descansado cambia todo lo que pasa después en la planta</h3>
+          <p class="art-bajada">Sin período de reposo, la actividad microbiana es baja y la planta queda expuesta a bloqueos que no tienen que ver con el pH ni con la dosificación.</p>
+          <a href="#" class="art-leer">Leer nota →</a>
+        </article>
+        <article class="nota">
+          <span class="art-label">Cultivo · pH</span>
+          <h3 class="art-title">pH 6.0–6.8: el rango donde viven los nutrientes</h3>
+          <p class="art-bajada">Un punto fuera de rango puede bloquear hierro, calcio o boro sin que el sustrato esté deficiente.</p>
+          <a href="#" class="art-leer">Leer →</a>
+        </article>
+        <article class="nota">
+          <span class="art-label">Cultivo · Bioinsumos</span>
+          <h3 class="art-title">Té de humus aireado: cómo prepararlo sin arruinar la microbiología</h3>
+          <p class="art-bajada">El proceso de aireación, la dilución y el pH final determinan si el té activa o stresa el sustrato.</p>
+          <a href="#" class="art-leer">Leer →</a>
+        </article>
+        <article class="nota">
+          <span class="art-label">Cultivo · Diagnóstico</span>
+          <h3 class="art-title">Curling de puntas: cuándo es pH, cuándo es EC y cuándo es calor</h3>
+          <p class="art-bajada">Cómo diagnosticar leyendo el patrón de distribución antes de corregir a ciegas.</p>
+          <a href="#" class="art-leer">Leer →</a>
+        </article>
+      </div>
     </div>
-    <div class="pilares-grid reveal">
-      <article class="pilar">
-        <span class="eyebrow">SV — Suelo</span>
-        <h3>Suelo vivo</h3>
-        <p>La tierra como organismo, no como soporte. Lo que pasa en la microbiología y la materia orgánica del sustrato define, en gran parte, lo que la planta puede ofrecer después.</p>
-      </article>
-      <article class="pilar">
-        <span class="eyebrow">SEC — Sistema</span>
-        <h3>Sistema endocannabinoide y cannabis</h3>
-        <p>El puente entre la planta y el cuerpo. Receptores, cannabinoides y terpenos explicados desde la fisiología, sin atajos ni promesas.</p>
-      </article>
-      <article class="pilar">
-        <span class="eyebrow">CC — Cultura</span>
-        <h3>Cultura del cuidado</h3>
-        <p>Cómo se habla, se cultiva y se acompaña el uso de cannabis sin estigma. Marco legal, prácticas y comunidad alrededor del cuidado consciente.</p>
-      </article>
+  </section>
+
+  <!-- BIENESTAR -->
+  <section class="seccion" id="bienestar">
+    <div class="container">
+      <div class="sec-header reveal">
+        <h2 class="sec-titulo">Bienestar</h2>
+        <a href="#" class="sec-ver">Ver todo →</a>
+      </div>
+      <div class="notas-grid reveal">
+        <article class="nota grande">
+          <div class="art-img-box">imagen</div>
+          <span class="art-label">Bienestar · Cuidado</span>
+          <h3 class="art-title">Cultivar como práctica de atención: lo que el cuidado de una planta le devuelve a quien cuida</h3>
+          <p class="art-bajada">El ritmo de observación — revisar el sustrato, leer las hojas, registrar lo que cambia — activa un modo de presencia que cuesta sostener en otros contextos.</p>
+          <a href="#" class="art-leer">Leer nota →</a>
+        </article>
+        <article class="nota">
+          <span class="art-label">Bienestar · Sueño</span>
+          <h3 class="art-title">Cannabis, adenosina y el ciclo del sueño</h3>
+          <p class="art-bajada">Qué se sabe, qué se especula y cómo leer las etiquetas que prometen demasiado.</p>
+          <a href="#" class="art-leer">Leer →</a>
+        </article>
+        <article class="nota">
+          <span class="art-label">Bienestar · Marco legal</span>
+          <h3 class="art-title">REPROCANN en 2026: qué habilita, qué no y qué sigue en gris</h3>
+          <p class="art-bajada">Los vacíos que todavía generan incertidumbre para quienes cultivamos en Argentina.</p>
+          <a href="#" class="art-leer">Leer →</a>
+        </article>
+        <article class="nota">
+          <span class="art-label">Bienestar · Inflamación</span>
+          <h3 class="art-title">Inflamación crónica de bajo grado y sistema endocannabinoide</h3>
+          <p class="art-bajada">El vínculo entre estilo de vida, dieta y el tono endocannabinoide basal.</p>
+          <a href="#" class="art-leer">Leer →</a>
+        </article>
+      </div>
     </div>
+  </section>
+
+  <!-- COMUNIDAD -->
+  <section class="seccion" id="comunidad">
+    <div class="container">
+      <div class="sec-header reveal">
+        <h2 class="sec-titulo">Comunidad</h2>
+        <a href="#" class="sec-ver">Ver todo →</a>
+      </div>
+      <div class="notas-grid reveal">
+        <article class="nota grande">
+          <div class="art-img-box">imagen</div>
+          <span class="art-label">Comunidad · Entrevista</span>
+          <h3 class="art-title">Cultivadoras que documentan: cómo el registro personal se vuelve conocimiento colectivo</h3>
+          <p class="art-bajada">Conversaciones con personas del ecosistema cannábico argentino sobre la práctica de documentar el propio cultivo y compartirlo sin lenguaje comercial.</p>
+          <a href="#" class="art-leer">Leer nota →</a>
+        </article>
+        <article class="nota">
+          <span class="art-label">Comunidad · ONGs</span>
+          <h3 class="art-title">Asociaciones civiles y autocultivo: el mapa actual en Argentina</h3>
+          <p class="art-bajada">Quiénes están trabajando, desde dónde y con qué modelo.</p>
+          <a href="#" class="art-leer">Leer →</a>
+        </article>
+        <article class="nota">
+          <span class="art-label">Comunidad · Pacientes</span>
+          <h3 class="art-title">Qué preguntan los pacientes que los médicos todavía no saben responder</h3>
+          <p class="art-bajada">La brecha entre la demanda de información y la formación disponible en cannabis medicinal.</p>
+          <a href="#" class="art-leer">Leer →</a>
+        </article>
+        <article class="nota">
+          <span class="art-label">Comunidad · Genéticas</span>
+          <h3 class="art-title">Bancos de semillas argentinos: quiénes son y qué están desarrollando</h3>
+          <p class="art-bajada">Arkham, Mamua, Yacare, Clon Factory. El ecosistema de genéticas locales en 2026.</p>
+          <a href="#" class="art-leer">Leer →</a>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- DONAR -->
+  <section class="franja-donar" id="donar">
+    <span class="eyebrow">Apoyá el proyecto</span>
+    <h2>Maleza es independiente.<br>Lo que publicamos no tiene precio.</h2>
+    <p>Sin publicidad, sin sponsors, sin agenda comercial. Si lo que hacemos te sirve, podés colaborar con lo que puedas.</p>
+    <div class="donar-opciones">
+      <button class="donar-monto" onclick="this.classList.toggle('active')">$500</button>
+      <button class="donar-monto active" onclick="document.querySelectorAll('.donar-monto').forEach(b=>b.classList.remove('active')); this.classList.add('active')">$1.000</button>
+      <button class="donar-monto" onclick="document.querySelectorAll('.donar-monto').forEach(b=>b.classList.remove('active')); this.classList.add('active')">$2.000</button>
+      <button class="donar-monto" onclick="document.querySelectorAll('.donar-monto').forEach(b=>b.classList.remove('active')); this.classList.add('active')">Otro monto</button>
+    </div>
+    <button class="btn-donar-grande">Colaborar con Maleza →</button>
   </section>
 
   <!-- GLOSARIO -->
-  <section id="glosario" class="container">
-    <div class="section-head reveal">
-      <span class="eyebrow">Información clave</span>
-      <h2>Antes de seguir leyendo</h2>
+  <section class="glosario" id="glosario">
+    <div class="container">
+      <div class="sec-header reveal">
+        <h2 class="sec-titulo">Glosario</h2>
+      </div>
+      <dl class="glosario-grid reveal">
+        <div class="glosario-item">
+          <dt>Sistema endocannabinoide</dt>
+          <dd>Red de receptores y moléculas propias del cuerpo que regula el sueño, el apetito, el dolor y el estado de ánimo. El cannabis interactúa con esta red — no la crea.</dd>
+        </div>
+        <div class="glosario-item">
+          <dt>Fitocannabinoides</dt>
+          <dd>Compuestos producidos por la planta de cannabis (THC, CBD, CBG, entre otros) capaces de interactuar con el sistema endocannabinoide humano.</dd>
+        </div>
+        <div class="glosario-item">
+          <dt>Terpenos</dt>
+          <dd>Compuestos aromáticos presentes en el cannabis y en otras plantas. Influyen en el aroma, el sabor y posiblemente en cómo se percibe cada genética.</dd>
+        </div>
+        <div class="glosario-item">
+          <dt>Suelo vivo</dt>
+          <dd>Sistema de cultivo donde microorganismos, materia orgánica y raíces interactúan activamente, en lugar de depender de fertilización mineral aislada.</dd>
+        </div>
+        <div class="glosario-item">
+          <dt>REPROCANN</dt>
+          <dd>Registro del Programa de Cannabis del Ministerio de Salud de Argentina, que habilita el autocultivo y tenencia para uso medicinal, terapéutico y/o paliativo.</dd>
+        </div>
+        <div class="glosario-item">
+          <dt>Efecto entourage</dt>
+          <dd>La interacción sinérgica entre cannabinoides, terpenos y otros compuestos de la planta que modifica y potencia el efecto del conjunto respecto a cada componente aislado.</dd>
+        </div>
+      </dl>
     </div>
-    <dl class="glosario-list reveal">
-      <div class="glosario-item">
-        <dt>Sistema endocannabinoide</dt>
-        <dd>Red de receptores y moléculas propias del cuerpo que regula procesos como el sueño, el apetito, el dolor y el estado de ánimo. El cannabis interactúa con esta red — no la crea.</dd>
-      </div>
-      <div class="glosario-item">
-        <dt>Fitocannabinoides</dt>
-        <dd>Compuestos producidos por la planta de cannabis (THC, CBD, CBG, entre otros) capaces de interactuar con el sistema endocannabinoide humano.</dd>
-      </div>
-      <div class="glosario-item">
-        <dt>Terpenos</dt>
-        <dd>Compuestos aromáticos presentes en el cannabis y en muchas otras plantas. Influyen en el aroma, el sabor y, posiblemente, en cómo se percibe cada genética.</dd>
-      </div>
-      <div class="glosario-item">
-        <dt>Suelo vivo</dt>
-        <dd>Sistema de cultivo donde microorganismos, materia orgánica y raíces interactúan de forma activa, en lugar de depender solo de fertilización mineral aislada.</dd>
-      </div>
-      <div class="glosario-item">
-        <dt>REPROCANN</dt>
-        <dd>Registro del Programa de Cannabis del Ministerio de Salud de Argentina, que habilita el autocultivo y la tenencia de cannabis para uso medicinal, terapéutico y/o paliativo del dolor.</dd>
-      </div>
-    </dl>
   </section>
 
-  <!-- MARCO -->
-  <section class="marco">
-    <div class="container marco-inner reveal">
-      <span class="eyebrow">Marco</span>
-      <p>En Argentina, el cultivo y el uso medicinal de cannabis están regulados por la Ley 27.350 y el Programa REPROCANN.</p>
-      <p>Este espacio tiene fines documentales y educativos: no constituye indicación médica ni reemplaza la consulta con un profesional de la salud.</p>
-    </div>
-  </section>
+  <!-- MARCO LEGAL -->
+  <div class="marco">
+    En Argentina el cultivo y uso medicinal de cannabis están regulados por la Ley 27.350 y el Programa REPROCANN.<br>
+    Este espacio tiene fines documentales y educativos: no constituye indicación médica ni reemplaza la consulta profesional.
+  </div>
 
 </main>
 
 <footer>
-  <div class="container footer-row">
-    <div class="wordmark">MALEZA</div>
+  <div class="footer-inner">
+    <div class="wordmark" style="font-size:1.2rem;">Maleza</div>
     <div class="footer-links">
+      <a href="#salud">Salud</a>
+      <a href="#cultivo">Cultivo</a>
+      <a href="#bienestar">Bienestar</a>
+      <a href="#comunidad">Comunidad</a>
       <a href="https://www.instagram.com/maleza_arg/" target="_blank" rel="noopener">Instagram</a>
-      <a href="#columnas">Medicina</a>
-      <a href="#columnas">Cultivo</a>
-      <a href="#columnas">Bienestar</a>
-      </div>
-    <div class="footer-meta">© 2026 · Buenos Aires, Argentina</div>
+      <a href="#donar">Donar</a>
+    </div>
+    <span class="footer-meta">© 2026 · Buenos Aires, Argentina</span>
   </div>
 </footer>
 
 <script>
-  // tabs columnas
-  const tabs = document.querySelectorAll('.col-tab');
-  const panels = document.querySelectorAll('.columna-panel');
-  tabs.forEach(tab => {
-    tab.addEventListener('click', () => {
-      tabs.forEach(t => { t.classList.remove('active'); t.setAttribute('aria-selected','false'); });
-      panels.forEach(p => p.classList.remove('active'));
-      tab.classList.add('active');
-      tab.setAttribute('aria-selected','true');
-      const target = document.getElementById(tab.getAttribute('aria-controls'));
-      if(target){ target.classList.add('active'); }
-    });
-  });
-
-  // reveal on scroll
-  if ('IntersectionObserver' in window){
-    const els = document.querySelectorAll('.reveal');
-    const io = new IntersectionObserver((entries)=>{
-      entries.forEach(e=>{
-        if(e.isIntersecting){
-          e.target.classList.add('is-visible');
-          io.unobserve(e.target);
-        }
-      });
-    }, { threshold:0.15 });
-    els.forEach(el=> io.observe(el));
+  if ('IntersectionObserver' in window) {
+    const io = new IntersectionObserver(entries => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.reveal').forEach(el => io.observe(el));
   } else {
-    document.querySelectorAll('.reveal').forEach(el=> el.classList.add('is-visible'));
+    document.querySelectorAll('.reveal').forEach(el => el.classList.add('in'));
   }
 </script>
 
