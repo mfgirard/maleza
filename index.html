@@ -40,11 +40,9 @@
   img { display: block; max-width: 100%; }
   .container { max-width: var(--max); margin: 0 auto; padding: 0 1.5rem; }
 
-  /* ── REVEAL ── */
   .reveal { opacity: 0; transform: translateY(14px); transition: opacity .65s ease, transform .65s ease; }
   .reveal.in { opacity: 1; transform: none; }
 
-  /* ── TOPBAR ── */
   .topbar {
     border-bottom: 1px solid var(--ink-20);
     padding: 0.55rem 1.5rem;
@@ -59,7 +57,6 @@
   }
   .topbar a { color: var(--clay); }
 
-  /* ── HEADER ── */
   header {
     position: sticky; top: 0; z-index: 100;
     background: rgba(255,255,255,0.97);
@@ -103,6 +100,7 @@
     transition: border-color 0.2s, color 0.2s;
   }
   .main-nav a:hover { border-color: var(--clay); color: var(--clay); }
+  .main-nav a.active { border-color: var(--clay); color: var(--clay); }
   .btn-donar {
     font-family: var(--font-mono);
     font-size: 0.6rem;
@@ -125,7 +123,6 @@
     .wordmark { font-size: 1.5rem; }
   }
 
-  /* ── HERO REVISTA ── */
   .hero-revista {
     border-bottom: 1px solid var(--ink-20);
     padding: 3rem 0 2.5rem;
@@ -198,7 +195,6 @@
     .hero-col:last-child { border-bottom: none; }
   }
 
-  /* ── SECCIONES ── */
   .seccion { padding: 3rem 0; border-top: 2px solid var(--ink); }
   .sec-header {
     display: flex;
@@ -256,7 +252,6 @@
     .nota.grande { grid-row: span 1; }
   }
 
-  /* ── FRANJA DONAR ── */
   .franja-donar {
     background: var(--ink);
     color: white;
@@ -305,10 +300,7 @@
     transition: background 0.2s, border-color 0.2s;
     background: transparent;
   }
-  .donar-monto:hover, .donar-monto.active {
-    background: var(--clay);
-    border-color: var(--clay);
-  }
+  .donar-monto:hover, .donar-monto.active { background: var(--clay); border-color: var(--clay); }
   .btn-donar-grande {
     font-family: var(--font-mono);
     font-size: 0.72rem;
@@ -327,7 +319,6 @@
   }
   .btn-donar-grande:hover { background: #a5622c; }
 
-  /* ── GLOSARIO ── */
   .glosario { padding: 3rem 0; border-top: 2px solid var(--ink); background: var(--crema); }
   .glosario-grid {
     display: grid;
@@ -349,11 +340,8 @@
     margin-bottom: 0.4rem;
   }
   .glosario-item dd { font-size: 0.82rem; color: var(--ink-50); line-height: 1.65; }
-  @media (max-width: 720px) {
-    .glosario-grid { grid-template-columns: 1fr; }
-  }
+  @media (max-width: 720px) { .glosario-grid { grid-template-columns: 1fr; } }
 
-  /* ── MARCO ── */
   .marco {
     padding: 2rem 1.5rem;
     border-top: 1px solid var(--ink-20);
@@ -366,7 +354,6 @@
     line-height: 1.8;
   }
 
-  /* ── FOOTER ── */
   footer {
     border-top: 2px solid var(--ink);
     padding: 2rem 1.5rem;
@@ -398,8 +385,6 @@
     color: var(--ink-50);
   }
 
-
-  /* ── MODAL DONACIÓN ── */
   .modal-overlay {
     display: none;
     position: fixed; inset: 0; z-index: 999;
@@ -420,9 +405,7 @@
     letter-spacing: 0.1em; text-transform: uppercase;
     color: #0A0A0A; margin-bottom: 1.8rem;
   }
-  .modal-fila {
-    margin-bottom: 1.4rem;
-  }
+  .modal-fila { margin-bottom: 1.4rem; }
   .modal-label {
     font-family: 'Jost', sans-serif;
     font-size: 0.58rem; font-weight: 500;
@@ -436,14 +419,8 @@
     color: #0A0A0A; letter-spacing: 0.02em;
     word-break: break-all;
   }
-  .modal-valor.mono {
-    font-size: 0.88rem; letter-spacing: 0.06em;
-    color: #3D4E1E;
-  }
-  .modal-divider {
-    border: none; border-top: 1px solid rgba(10,10,10,0.1);
-    margin: 1.2rem 0;
-  }
+  .modal-valor.mono { font-size: 0.88rem; letter-spacing: 0.06em; color: #3D4E1E; }
+  .modal-divider { border: none; border-top: 1px solid rgba(10,10,10,0.1); margin: 1.2rem 0; }
   .modal-nota {
     font-family: 'Nunito', sans-serif;
     font-size: 0.75rem; color: rgba(10,10,10,0.45);
@@ -467,17 +444,259 @@
     background: none; border: none; line-height: 1;
   }
   .modal-x:hover { color: #0A0A0A; }
+
+  /* ── EVIDENCIA ── */
+  .seccion-evidencia {
+    padding: 3rem 0;
+    border-top: 2px solid var(--ink);
+    background: var(--blanco);
+  }
+  .evidencia-hero {
+    text-align: center;
+    padding: 2rem 0 2.5rem;
+    border-bottom: 1px solid var(--ink-20);
+    margin-bottom: 2rem;
+  }
+  .evidencia-eyebrow {
+    font-family: var(--font-mono);
+    font-size: 0.58rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--clay);
+    display: block;
+    margin-bottom: 0.8rem;
+  }
+  .evidencia-hero h2 {
+    font-family: var(--font-display);
+    font-size: clamp(1.6rem, 3vw, 2.4rem);
+    font-weight: 500;
+    font-style: italic;
+    letter-spacing: -0.01em;
+    margin-bottom: 0.8rem;
+    line-height: 1.15;
+  }
+  .evidencia-hero p {
+    font-size: 0.88rem;
+    color: var(--ink-50);
+    max-width: 48ch;
+    margin: 0 auto 1.8rem;
+    line-height: 1.7;
+  }
+  .ev-search-box {
+    max-width: 560px;
+    margin: 0 auto;
+    display: flex;
+    border: 1.5px solid var(--ink);
+  }
+  .ev-search-box input {
+    flex: 1;
+    border: none;
+    outline: none;
+    padding: 12px 16px;
+    font-family: var(--font-body);
+    font-size: 14px;
+    color: var(--ink);
+    background: var(--crema);
+  }
+  .ev-search-box input::placeholder { color: var(--ink-50); }
+  .ev-search-box button {
+    background: var(--ink);
+    border: none;
+    padding: 12px 22px;
+    color: white;
+    font-family: var(--font-mono);
+    font-size: 0.6rem;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: background 0.2s;
+  }
+  .ev-search-box button:hover { background: var(--clay); }
+
+  .ev-tags {
+    display: flex;
+    gap: 8px;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 1rem;
+  }
+  .ev-tag {
+    font-size: 0.58rem;
+    font-family: var(--font-mono);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 4px 12px;
+    border: 1px solid var(--ink-20);
+    color: var(--ink-50);
+    cursor: pointer;
+    transition: all 0.15s;
+  }
+  .ev-tag:hover { border-color: var(--clay); color: var(--clay); }
+
+  .ev-filtros {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 1.5rem;
+    flex-wrap: wrap;
+  }
+  .ev-filtros-label {
+    font-family: var(--font-mono);
+    font-size: 0.55rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--ink-50);
+    margin-right: 4px;
+  }
+  .ev-filtro {
+    font-size: 0.58rem;
+    font-family: var(--font-mono);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 5px 14px;
+    border: 1px solid var(--ink-20);
+    background: var(--blanco);
+    color: var(--ink-50);
+    cursor: pointer;
+    transition: all 0.15s;
+  }
+  .ev-filtro:hover { border-color: var(--clay); color: var(--clay); }
+  .ev-filtro.activo { background: var(--ink); color: white; border-color: var(--ink); }
+
+  .ev-results-meta {
+    font-family: var(--font-mono);
+    font-size: 0.58rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink-50);
+    margin-bottom: 1.2rem;
+  }
+  .ev-results-meta strong { color: var(--ink); }
+
+  .ev-section-label {
+    font-family: var(--font-mono);
+    font-size: 0.55rem;
+    font-weight: 600;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--ink-50);
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .ev-section-label::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--ink-20);
+  }
+
+  .ev-results { display: flex; flex-direction: column; gap: 10px; }
+  .ev-grupo { margin-bottom: 1.8rem; }
+
+  .ev-card {
+    background: var(--blanco);
+    border: 1px solid var(--ink-20);
+    padding: 1.2rem 1.4rem;
+    transition: border-color 0.2s, background 0.2s;
+  }
+  .ev-card:hover { border-color: var(--clay); background: var(--crema); }
+  .ev-card.maleza-pick { border-left: 3px solid var(--clay); }
+
+  .ev-card-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 16px;
+    margin-bottom: 5px;
+  }
+  .ev-card-title {
+    font-family: var(--font-display);
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: var(--ink);
+    line-height: 1.4;
+    flex: 1;
+  }
+  .ev-badges { display: flex; flex-direction: column; gap: 4px; align-items: flex-end; flex-shrink: 0; }
+  .ev-badge {
+    font-size: 0.52rem;
+    font-family: var(--font-mono);
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 3px 9px;
+    white-space: nowrap;
+  }
+  .ev-badge-humanos { background: #eef2e6; color: var(--clay); }
+  .ev-badge-animales { background: #fdf3e0; color: #5a3e0a; }
+  .ev-badge-vitro { background: #e8f0fb; color: #1a3a6b; }
+  .ev-badge-maleza { background: var(--ink); color: white; }
+
+  .ev-card-meta {
+    font-size: 0.58rem;
+    font-family: var(--font-mono);
+    letter-spacing: 0.06em;
+    color: var(--ink-50);
+    margin-bottom: 8px;
+    text-transform: uppercase;
+  }
+  .ev-card-resumen {
+    font-size: 0.84rem;
+    color: var(--ink-50);
+    line-height: 1.65;
+    margin-bottom: 10px;
+  }
+  .ev-nota-maleza {
+    background: #eef2e6;
+    border-left: 2px solid var(--clay);
+    padding: 10px 14px;
+    margin-bottom: 10px;
+  }
+  .ev-nota-maleza-label {
+    font-family: var(--font-mono);
+    font-size: 0.52rem;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--clay);
+    margin-bottom: 5px;
+  }
+  .ev-nota-maleza p {
+    font-size: 0.82rem;
+    color: var(--ink-50);
+    line-height: 1.6;
+  }
+  .ev-card-footer {
+    padding-top: 8px;
+    border-top: 1px solid var(--ink-20);
+  }
+  .ev-card-link {
+    font-size: 0.58rem;
+    font-family: var(--font-mono);
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink-50);
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    transition: color 0.15s;
+  }
+  .ev-card-link:hover { color: var(--clay); }
+  .ev-card-link svg { width: 11px; height: 11px; }
 </style>
 </head>
 <body>
 
-<!-- TOPBAR -->
 <div class="topbar">
   <span>Buenos Aires, Argentina · REPROCANN</span>
   <a href="#donar">Apoyá Maleza →</a>
 </div>
 
-<!-- HEADER -->
 <header>
   <div class="header-inner">
     <div class="wordmark">Maleza</div>
@@ -485,7 +704,7 @@
       <a href="#salud">Salud</a>
       <a href="#bienestar">Bienestar</a>
       <a href="#cultivo">Cultivo</a>
-      <a href="evidencia.html">Evidencia</a>
+      <a href="#evidencia">Evidencia</a>
       <a href="#glosario">Glosario</a>
     </nav>
     <a href="#donar" class="btn-donar">Donar</a>
@@ -494,34 +713,26 @@
 
 <main>
 
-  <!-- HERO TIPO REVISTA -->
   <section class="hero-revista">
     <div class="container">
       <div class="hero-grid">
-
         <div class="hero-col featured reveal">
           <span class="art-label">Salud · Destacado</span>
           <h1 class="art-title">El sistema endocannabinoide: lo que el cuerpo ya sabía antes de que llegara la planta</h1>
           <p class="art-bajada">Receptores CB1 y CB2, AEA y 2-AG. El cannabis entra en una red que ya existe — no la inventa.</p>
           <a href="#" class="art-leer">Leer nota →</a>
         </div>
-
         <div class="hero-sep"></div>
-
         <div class="hero-col reveal">
           <span class="art-label">Cultivo</span>
           <h2 class="art-title">Por qué el sustrato descansado cambia todo lo que pasa después</h2>
           <p class="art-bajada">Sin período de reposo, la microbiología no alcanza para mediar entre el sustrato y la raíz.</p>
           <a href="#" class="art-leer">Leer →</a>
         </div>
-
-        
-
       </div>
     </div>
   </section>
 
-  <!-- SALUD -->
   <section class="seccion" id="salud">
     <div class="container">
       <div class="sec-header reveal">
@@ -557,25 +768,6 @@
     </div>
   </section>
 
-  <!-- CULTIVO -->
-  <section class="seccion" id="cultivo">
-    <div class="container">
-      <div class="sec-header reveal">
-        <h2 class="sec-titulo">Cultivo</h2>
-        <a href="#" class="sec-ver">Ver todo →</a>
-      </div>
-      <div class="notas-grid reveal">
-        <article class="nota grande">
-          <span class="art-label">Cultivo · Suelo vivo</span>
-          <h3 class="art-title">Por qué el sustrato descansado cambia todo lo que pasa después en la planta</h3>
-          <p class="art-bajada">Sin período de reposo, la actividad microbiana es baja y la planta queda expuesta a bloqueos que no tienen que ver con el pH ni con la dosificación.</p>
-          <a href="#" class="art-leer">Leer nota →</a>
-        </article>
-                              </div>
-    </div>
-  </section>
-
-  <!-- BIENESTAR -->
   <section class="seccion" id="bienestar">
     <div class="container">
       <div class="sec-header reveal">
@@ -611,43 +803,106 @@
     </div>
   </section>
 
-  <!-- COMUNIDAD -->
-  <section class="seccion" id="comunidad">
+  <section class="seccion" id="cultivo">
     <div class="container">
       <div class="sec-header reveal">
-        <h2 class="sec-titulo">Comunidad</h2>
+        <h2 class="sec-titulo">Cultivo</h2>
         <a href="#" class="sec-ver">Ver todo →</a>
       </div>
       <div class="notas-grid reveal">
         <article class="nota grande">
-          <span class="art-label">Comunidad · Entrevista</span>
-          <h3 class="art-title">Cultivadoras que documentan: cómo el registro personal se vuelve conocimiento colectivo</h3>
-          <p class="art-bajada">Conversaciones con personas del ecosistema cannábico argentino sobre la práctica de documentar el propio cultivo y compartirlo sin lenguaje comercial.</p>
+          <span class="art-label">Cultivo · Suelo vivo</span>
+          <h3 class="art-title">Por qué el sustrato descansado cambia todo lo que pasa después en la planta</h3>
+          <p class="art-bajada">Sin período de reposo, la actividad microbiana es baja y la planta queda expuesta a bloqueos que no tienen que ver con el pH ni con la dosificación.</p>
           <a href="#" class="art-leer">Leer nota →</a>
-        </article>
-        <article class="nota">
-          <span class="art-label">Comunidad · ONGs</span>
-          <h3 class="art-title">Asociaciones civiles y autocultivo: el mapa actual en Argentina</h3>
-          <p class="art-bajada">Quiénes están trabajando, desde dónde y con qué modelo.</p>
-          <a href="#" class="art-leer">Leer →</a>
-        </article>
-        <article class="nota">
-          <span class="art-label">Comunidad · Pacientes</span>
-          <h3 class="art-title">Qué preguntan los pacientes que los médicos todavía no saben responder</h3>
-          <p class="art-bajada">La brecha entre la demanda de información y la formación disponible en cannabis medicinal.</p>
-          <a href="#" class="art-leer">Leer →</a>
-        </article>
-        <article class="nota">
-          <span class="art-label">Comunidad · Genéticas</span>
-          <h3 class="art-title">Bancos de semillas argentinos: quiénes son y qué están desarrollando</h3>
-          <p class="art-bajada">Arkham, Mamua, Yacare, Clon Factory. El ecosistema de genéticas locales en 2026.</p>
-          <a href="#" class="art-leer">Leer →</a>
         </article>
       </div>
     </div>
   </section>
 
-  <!-- DONAR -->
+  <!-- EVIDENCIA -->
+  <section class="seccion-evidencia" id="evidencia">
+    <div class="container">
+      <div class="evidencia-hero reveal">
+        <span class="evidencia-eyebrow">Base de evidencia científica</span>
+        <h2>la ciencia del cannabis,<br>en español</h2>
+        <p>Buscá estudios clínicos y preclínicos indexados en PubMed. Cada resultado viene con un resumen accesible y, cuando es relevante, con perspectiva editorial de Maleza.</p>
+        <div class="ev-search-box">
+          <input type="text" id="evInput" placeholder="ansiedad, dolor crónico, epilepsia, insomnio..." />
+          <button onclick="evBuscar()">Buscar</button>
+        </div>
+        <div class="ev-tags">
+          <span class="ev-tag" onclick="evTag('insomnio')">insomnio</span>
+          <span class="ev-tag" onclick="evTag('dolor neuropático')">dolor neuropático</span>
+          <span class="ev-tag" onclick="evTag('endocannabinoide')">endocannabinoide</span>
+          <span class="ev-tag" onclick="evTag('CBD epilepsia')">CBD epilepsia</span>
+          <span class="ev-tag" onclick="evTag('THC náuseas')">THC náuseas</span>
+          <span class="ev-tag" onclick="evTag('terpenos')">terpenos</span>
+        </div>
+      </div>
+
+      <div id="evResultados">
+        <p class="ev-results-meta">6 estudios para <strong>"ansiedad"</strong></p>
+        <div class="ev-filtros">
+          <span class="ev-filtros-label">Filtrar</span>
+          <button class="ev-filtro activo">Todos</button>
+          <button class="ev-filtro">En humanos</button>
+          <button class="ev-filtro">En animales</button>
+          <button class="ev-filtro">In vitro</button>
+          <button class="ev-filtro">Analizados por Maleza</button>
+        </div>
+        <div class="ev-results">
+          <div class="ev-grupo">
+            <p class="ev-section-label">Analizados por Maleza</p>
+            <div class="ev-card maleza-pick">
+              <div class="ev-card-header">
+                <p class="ev-card-title">Cannabidiol as a Potential Treatment for Anxiety Disorders</p>
+                <div class="ev-badges">
+                  <span class="ev-badge ev-badge-humanos">Humanos</span>
+                  <span class="ev-badge ev-badge-maleza">Maleza</span>
+                </div>
+              </div>
+              <p class="ev-card-meta">Blessing EM, Steenkamp MM et al. · 2015 · Neurotherapeutics</p>
+              <p class="ev-card-resumen">Revisión de la evidencia preclínica y clínica disponible sobre el uso de CBD para distintos tipos de trastornos de ansiedad. Los autores concluyen que el CBD muestra eficacia aguda en modelos animales y en estudios con humanos bajo condiciones de ansiedad inducida.</p>
+              <div class="ev-nota-maleza">
+                <p class="ev-nota-maleza-label">Perspectiva Maleza</p>
+                <p>Una de las revisiones más citadas en el campo. Lo que no siempre se menciona: la mayoría de los estudios en humanos son de dosis aguda única, no de tratamiento sostenido. Vale como punto de partida, no como conclusión.</p>
+              </div>
+              <div class="ev-card-footer">
+                <a href="https://pubmed.ncbi.nlm.nih.gov/26341731/" target="_blank" class="ev-card-link">Ver en PubMed <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
+              </div>
+            </div>
+          </div>
+          <div class="ev-grupo">
+            <p class="ev-section-label">Resultados de PubMed</p>
+            <div class="ev-card">
+              <div class="ev-card-header">
+                <p class="ev-card-title">The anxiolytic effect of cannabidiol on chronically stressed mice depends on hippocampal neurogenesis</p>
+                <div class="ev-badges"><span class="ev-badge ev-badge-animales">Animales</span></div>
+              </div>
+              <p class="ev-card-meta">Campos AC, Ortega Z et al. · 2013 · Journal of Psychopharmacology</p>
+              <p class="ev-card-resumen">Estudio en ratones bajo estrés crónico. El CBD redujo comportamientos ansiosos y el efecto dependió de la generación de nuevas neuronas en el hipocampo.</p>
+              <div class="ev-card-footer">
+                <a href="https://pubmed.ncbi.nlm.nih.gov/23153010/" target="_blank" class="ev-card-link">Ver en PubMed <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
+              </div>
+            </div>
+            <div class="ev-card" style="margin-top:10px">
+              <div class="ev-card-header">
+                <p class="ev-card-title">Neural basis of anxiolytic effects of cannabidiol (CBD) in generalized social anxiety disorder</p>
+                <div class="ev-badges"><span class="ev-badge ev-badge-humanos">Humanos</span></div>
+              </div>
+              <p class="ev-card-meta">Crippa JA, Derenusson GN et al. · 2011 · Journal of Psychopharmacology</p>
+              <p class="ev-card-resumen">Estudio con neuroimagen en pacientes con trastorno de ansiedad social. Una dosis única de CBD redujo la ansiedad subjetiva y mostró cambios en el flujo sanguíneo cerebral.</p>
+              <div class="ev-card-footer">
+                <a href="https://pubmed.ncbi.nlm.nih.gov/20829306/" target="_blank" class="ev-card-link">Ver en PubMed <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <section class="franja-donar" id="donar">
     <span class="eyebrow">Apoyá el proyecto</span>
     <h2>Maleza es independiente.<br>Lo que publicamos no tiene precio.</h2>
@@ -661,7 +916,6 @@
     <button class="btn-donar-grande" onclick="abrirModal()">Colaborar con Maleza →</button>
   </section>
 
-  <!-- GLOSARIO -->
   <section class="glosario" id="glosario">
     <div class="container">
       <div class="sec-header reveal">
@@ -696,7 +950,6 @@
     </div>
   </section>
 
-  <!-- MARCO LEGAL -->
   <div class="marco">
     En Argentina el cultivo y uso medicinal de cannabis están regulados por la Ley 27.350 y el Programa REPROCANN.<br>
     Este espacio tiene fines documentales y educativos: no constituye indicación médica ni reemplaza la consulta profesional.
@@ -709,9 +962,9 @@
     <div class="wordmark" style="font-size:1.2rem;">Maleza</div>
     <div class="footer-links">
       <a href="#salud">Salud</a>
-      <a href="#cultivo">Cultivo</a>
       <a href="#bienestar">Bienestar</a>
-      <a href="#comunidad">Comunidad</a>
+      <a href="#cultivo">Cultivo</a>
+      <a href="#evidencia">Evidencia</a>
       <a href="https://www.instagram.com/maleza_arg/" target="_blank" rel="noopener">Instagram</a>
       <a href="#donar">Donar</a>
     </div>
@@ -738,42 +991,46 @@
   } else {
     document.querySelectorAll('.reveal').forEach(el => el.classList.add('in'));
   }
+
+  document.getElementById('evInput').addEventListener('keydown', e => {
+    if (e.key === 'Enter') evBuscar();
+  });
+  function evTag(t) {
+    document.getElementById('evInput').value = t;
+    evBuscar();
+  }
+  function evBuscar() {
+    const q = document.getElementById('evInput').value.trim();
+    if (!q) return;
+    window.open('https://pubmed.ncbi.nlm.nih.gov/?term=cannabis+' + encodeURIComponent(q) + '&sort=relevance', '_blank');
+  }
 </script>
 
-
-<!-- MODAL DONACIÓN -->
 <div class="modal-overlay" id="modalDonar" onclick="if(event.target===this)cerrarModal()">
   <div class="modal">
     <button class="modal-x" onclick="cerrarModal()">×</button>
     <div class="modal-titulo">Colaborar con Maleza</div>
-
     <div class="modal-fila">
       <span class="modal-label">Titular</span>
       <span class="modal-valor">GIRARD MARIA FERNANDA</span>
     </div>
-
     <div class="modal-fila">
       <span class="modal-label">CBU</span>
       <span class="modal-valor mono">0110085330008506500315</span>
     </div>
-
     <div class="modal-fila">
       <span class="modal-label">Alias</span>
       <span class="modal-valor mono">MALEZA.REVISTA</span>
     </div>
-
     <div class="modal-fila">
       <span class="modal-label">Banco</span>
       <span class="modal-valor">Banco Nación Argentina</span>
     </div>
-
     <hr class="modal-divider">
-
     <p class="modal-nota">
       Podés transferir desde cualquier banco o billetera virtual usando el CBU o el alias.
       Cada aporte sostiene la independencia editorial de Maleza.
     </p>
-
     <button class="modal-cerrar" onclick="cerrarModal()">Cerrar</button>
   </div>
 </div>
