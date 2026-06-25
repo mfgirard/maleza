@@ -8,6 +8,21 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Jost:wght@400;500;700&family=Nunito:wght@300;400;600&display=swap" rel="stylesheet">
+
+<link ...>
+<link ...>
+<link ...>
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-4HGX1BVRHF"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+
+gtag('config', 'G-4HGX1BVRHF');
+</script>
+
 <style>
 
   :root {
@@ -825,8 +840,8 @@
     <div class="container">
       <div class="evidencia-hero reveal">
         <span class="evidencia-eyebrow">Base de evidencia científica</span>
-        <h2>la ciencia del cannabis,<br>en español</h2>
-        <p>Buscá estudios clínicos y preclínicos indexados en PubMed. Cada resultado viene con un resumen accesible y, cuando es relevante, con perspectiva editorial de Maleza.</p>
+        <h2>la ciencia del cannabis,<br>reunida en español</h2>
+        <p>Encontrá estudios científicos sobre cannabis y conocé en qué personas o animales se realizaron y cuáles fueron sus resultados. Todos los trabajos provienen de PubMed, una de las bases de datos médicas más importantes del mundo.</p>
         <div class="ev-search-box">
           <input type="text" id="evInput" placeholder="ansiedad, dolor crónico, epilepsia, insomnio..." />
           <button onclick="evBuscar()">Buscar</button>
@@ -842,19 +857,18 @@
       </div>
 
       <div id="evResultados">
-        <p class="ev-results-meta">6 estudios para <strong>"ansiedad"</strong></p>
         <div class="ev-filtros">
           <span class="ev-filtros-label">Filtrar</span>
-          <button class="ev-filtro activo">Todos</button>
-          <button class="ev-filtro">En humanos</button>
-          <button class="ev-filtro">En animales</button>
-          <button class="ev-filtro">In vitro</button>
-          <button class="ev-filtro">Analizados por Maleza</button>
+          <button class="ev-filtro activo" onclick="evFiltrar('todos', this)">Todos</button>
+          <button class="ev-filtro" onclick="evFiltrar('humanos', this)">En humanos</button>
+          <button class="ev-filtro" onclick="evFiltrar('animales', this)">En animales</button>
+          <button class="ev-filtro" onclick="evFiltrar('vitro', this)">In vitro</button>
+          <button class="ev-filtro" onclick="evFiltrar('maleza', this)">Analizados por Maleza</button>
         </div>
         <div class="ev-results">
-          <div class="ev-grupo">
+          <div class="ev-grupo" data-grupo="maleza">
             <p class="ev-section-label">Analizados por Maleza</p>
-            <div class="ev-card maleza-pick">
+            <div class="ev-card maleza-pick" data-tipo="humanos maleza">
               <div class="ev-card-header">
                 <p class="ev-card-title">Cannabidiol as a Potential Treatment for Anxiety Disorders</p>
                 <div class="ev-badges">
@@ -873,9 +887,9 @@
               </div>
             </div>
           </div>
-          <div class="ev-grupo">
+          <div class="ev-grupo" data-grupo="pubmed">
             <p class="ev-section-label">Resultados de PubMed</p>
-            <div class="ev-card">
+            <div class="ev-card" data-tipo="animales">
               <div class="ev-card-header">
                 <p class="ev-card-title">The anxiolytic effect of cannabidiol on chronically stressed mice depends on hippocampal neurogenesis</p>
                 <div class="ev-badges"><span class="ev-badge ev-badge-animales">Animales</span></div>
@@ -886,7 +900,7 @@
                 <a href="https://pubmed.ncbi.nlm.nih.gov/23153010/" target="_blank" class="ev-card-link">Ver en PubMed <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
               </div>
             </div>
-            <div class="ev-card" style="margin-top:10px">
+            <div class="ev-card" style="margin-top:10px" data-tipo="humanos">
               <div class="ev-card-header">
                 <p class="ev-card-title">Neural basis of anxiolytic effects of cannabidiol (CBD) in generalized social anxiety disorder</p>
                 <div class="ev-badges"><span class="ev-badge ev-badge-humanos">Humanos</span></div>
@@ -1003,6 +1017,30 @@
     const q = document.getElementById('evInput').value.trim();
     if (!q) return;
     window.open('https://pubmed.ncbi.nlm.nih.gov/?term=cannabis+' + encodeURIComponent(q) + '&sort=relevance', '_blank');
+  }
+
+  function evFiltrar(tipo, btn) {
+    // Actualizar botón activo
+    document.querySelectorAll('.ev-filtro').forEach(b => b.classList.remove('activo'));
+    btn.classList.add('activo');
+
+    const cards = document.querySelectorAll('.ev-card');
+    const grupos = document.querySelectorAll('.ev-grupo');
+
+    cards.forEach(card => {
+      if (tipo === 'todos') {
+        card.style.display = '';
+      } else {
+        const tipos = card.getAttribute('data-tipo') || '';
+        card.style.display = tipos.includes(tipo) ? '' : 'none';
+      }
+    });
+
+    // Ocultar grupos que quedaron sin ninguna card visible
+    grupos.forEach(grupo => {
+      const visibles = grupo.querySelectorAll('.ev-card:not([style*="display: none"])');
+      grupo.style.display = visibles.length === 0 ? 'none' : '';
+    });
   }
 </script>
 
