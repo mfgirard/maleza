@@ -735,7 +735,7 @@ gtag('config', 'G-4HGX1BVRHF');
           <span class="art-label">Salud · Destacado</span>
           <h1 class="art-title">El sistema endocannabinoide: lo que el cuerpo ya sabía antes de que llegara la planta</h1>
           <p class="art-bajada">Receptores CB1 y CB2, AEA y 2-AG. El cannabis entra en una red que ya existe — no la inventa.</p>
-          <a href="#" class="art-leer">Leer nota →</a>
+          <a href="#" class="art-leer" onclick="abrirNota('endocannabinoide'); return false;">Leer nota →</a>
         </div>
         <div class="hero-sep"></div>
         <div class="hero-col reveal">
@@ -968,7 +968,46 @@ gtag('config', 'G-4HGX1BVRHF');
     En Argentina el cultivo y uso medicinal de cannabis están regulados por la Ley 27.350 y el Programa REPROCANN.<br>
     Este espacio tiene fines documentales y educativos: no constituye indicación médica ni reemplaza la consulta profesional.
   </div>
+<!-- MODAL NOTAS -->
+<div id="modal-nota" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.5); z-index:1000; overflow-y:auto;">
+  <div style="background:#F7F2EA; max-width:680px; margin:3rem auto; padding:2.5rem 2rem; position:relative; border-radius:4px;">
+    <button onclick="cerrarNota()" style="position:absolute; top:1.25rem; right:1.25rem; background:none; border:none; font-size:1.25rem; cursor:pointer; color:#8A8070;">✕ volver</button>
+    <div id="modal-contenido"></div>
+  </div>
+</div>
 
+<!-- CONTENIDO NOTAS -->
+<div id="nota-endocannabinoide" style="display:none;">
+  <span style="font-family:'Montserrat',sans-serif; font-size:11px; letter-spacing:0.1em; color:#8A8070; text-transform:uppercase;">Salud · Destacado</span>
+  <h1 style="font-family:'Cormorant Garamond',serif; font-size:2rem; font-weight:400; line-height:1.3; color:#1C1108; margin:0.75rem 0 1rem;">El sistema endocannabinoide: lo que el cuerpo ya sabía antes de que llegara la planta</h1>
+  <p style="font-family:'Montserrat',sans-serif; font-size:14px; color:#8A8070; border-left:2px solid #B8956A; padding-left:1rem; margin-bottom:2rem; line-height:1.6;">Receptores, moléculas y equilibrio. El cannabis no crea este sistema: interactúa con una red biológica que nuestro organismo desarrolla desde mucho antes de entrar en contacto con la planta.</p>
+  <div style="font-family:'Cormorant Garamond',serif; font-size:1.1rem; line-height:1.85; color:#1C1108;">
+    <p>Antes de hablar de cannabis, hay que hablar del cuerpo.</p>
+    <p>Cuando escuchamos "cannabis medicinal", es común pensar primero en la planta. Pero la planta no es el punto de partida. El punto de partida somos nosotros.</p>
+    <p>Mucho antes de que una persona consuma cannabis, su organismo ya produce moléculas similares a los cannabinoides de la planta y cuenta con receptores capaces de responder a ellas. Ese conjunto de moléculas, receptores y enzimas forma el sistema endocannabinoide, una red de comunicación distribuida por prácticamente todo el organismo cuya función principal es ayudar a mantener el equilibrio interno, conocido como homeostasis.</p>
+    <p>En otras palabras, el cannabis no "instala" un sistema nuevo. Interactúa con uno que ya existe.</p>
+    <h2 style="font-family:'Montserrat',sans-serif; font-size:12px; font-weight:500; letter-spacing:0.1em; text-transform:uppercase; color:#8A8070; margin:2rem 0 0.75rem;">¿Qué hace el sistema endocannabinoide?</h2>
+    <p>Imaginemos una ciudad. Hay semáforos, señales de tránsito y centros de control que coordinan el movimiento para evitar el caos. El sistema endocannabinoide funciona de una manera parecida.</p>
+    <p>No hace que el cuerpo "funcione" por sí solo, sino que ayuda a regular la actividad de muchos otros sistemas cuando algo cambia: estrés, dolor, inflamación, apetito, temperatura, sueño o respuesta inmunológica. Su función principal es colaborar con el mantenimiento de la homeostasis, es decir, mantener un equilibrio dinámico frente a cambios internos y externos.</p>
+    <p>Por eso hoy sabemos que no actúa de forma aislada. Está en constante diálogo con el sistema nervioso, el sistema inmunológico y el sistema endocrino.</p>
+    <h2 style="font-family:'Montserrat',sans-serif; font-size:12px; font-weight:500; letter-spacing:0.1em; text-transform:uppercase; color:#8A8070; margin:2rem 0 0.75rem;">¿De qué está formado?</h2>
+    <p>Aunque es mucho más complejo, puede entenderse a partir de tres componentes principales.</p>
+    <p><strong>1. Endocannabinoides.</strong> Son moléculas producidas por nuestro propio organismo cuando se necesitan. A diferencia de muchos neurotransmisores, no permanecen almacenadas esperando ser utilizadas. Se sintetizan "a demanda". Las dos más estudiadas son la Anandamida (AEA) y el 2-araquidonilglicerol (2-AG).</p>
+    <p><strong>2. Receptores.</strong> Los endocannabinoides necesitan un lugar donde actuar. Los más conocidos son CB1, abundante en el sistema nervioso, y CB2, presente principalmente en células del sistema inmunológico. Aunque suelen presentarse como dos "interruptores", hoy sabemos que el sistema es mucho más amplio.</p>
+    <p><strong>3. Enzimas.</strong> Una vez que los endocannabinoides cumplieron su función, deben degradarse. Para eso existen enzimas específicas, entre ellas FAAH y MAGL, que ayudan a regular cuánto tiempo permanecen activas estas moléculas.</p>
+    <h2 style="font-family:'Montserrat',sans-serif; font-size:12px; font-weight:500; letter-spacing:0.1em; text-transform:uppercase; color:#8A8070; margin:2rem 0 0.75rem;">¿Dónde entra el cannabis?</h2>
+    <p>La planta de cannabis no crea este sistema. Interactúa con él.</p>
+    <p>Algunos fitocannabinoides, como el THC, pueden unirse directamente a determinados receptores, especialmente CB1. Otros, como el CBD, parecen actuar de manera más indirecta, modulando distintos componentes del sistema y de otras vías biológicas relacionadas.</p>
+    <p>Por eso dos personas pueden responder de manera diferente al mismo preparado de cannabis. No solo importa la planta. También importa el organismo que la recibe.</p>
+    <h2 style="font-family:'Montserrat',sans-serif; font-size:12px; font-weight:500; letter-spacing:0.1em; text-transform:uppercase; color:#8A8070; margin:2rem 0 0.75rem;">Un sistema que sigue expandiéndose</h2>
+    <p>Durante muchos años se pensó que el sistema endocannabinoide estaba formado únicamente por dos receptores y dos endocannabinoides. Hoy esa visión quedó corta.</p>
+    <p>La investigación continúa incorporando nuevas moléculas, receptores y mecanismos de regulación, dando lugar al concepto de endocannabinoidoma, una red biológica mucho más amplia e integrada con otros sistemas del organismo.</p>
+    <p>Eso significa que todavía estamos lejos de comprender por completo cómo funciona. Y probablemente esa sea una de las partes más fascinantes de estudiarlo.</p>
+    <div style="background:#EDE8E0; border-radius:4px; padding:1.25rem 1.5rem; margin:2rem 0;">
+      <p style="font-family:'Montserrat',sans-serif; font-size:11px; letter-spacing:0.1em; text-transform:uppercase; color:#8A8070; margin-bottom:0.5rem;">En Maleza creemos que…</p>
+      <p style="font-size:1rem; color:#3D4E1E; margin:0;">Entender el cannabis empieza por entender el cuerpo. La planta no actúa en el vacío. Interactúa con una red biológica que evolucionó durante millones de años para ayudar a mantener el equilibrio del organismo. Por eso, antes de preguntarnos qué puede hacer un cannabinoide, conviene preguntarnos primero cómo funciona el sistema con el que va a interactuar.</p>
+    </div>
+  </div>
 </main>
 
 <footer>
@@ -1072,6 +1111,23 @@ gtag('config', 'G-4HGX1BVRHF');
     <button class="modal-cerrar" onclick="cerrarModal()">Cerrar</button>
   </div>
 </div>
-
+<script>
+function abrirNota(id) {
+  var contenido = document.getElementById('nota-' + id);
+  var modal = document.getElementById('modal-nota');
+  if (contenido && modal) {
+    document.getElementById('modal-contenido').innerHTML = contenido.innerHTML;
+    modal.style.display = 'block';
+    document.body.style.overflow = 'hidden';
+  }
+}
+function cerrarNota() {
+  document.getElementById('modal-nota').style.display = 'none';
+  document.body.style.overflow = '';
+}
+document.getElementById('modal-nota').addEventListener('click', function(e) {
+  if (e.target === this) cerrarNota();
+});
+</script>
 </body>
 </html>
